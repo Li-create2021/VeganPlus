@@ -1,14 +1,15 @@
-import logo from './logo.svg';
+
 import './App.css';
-import './components/searchInput';
+import './components/SearchInput';
 import SuggestionSection from './components/SuggestionSection'
-import searchInput from './components/searchInput'
+import SearchInput from './components/SearchInput';
 
 function App() {
   return (
     <div className="App">
       <SuggestionSection />
-      <searchInput />
+      {/*<SearchInputImg />*/}
+      <SearchInput />
     </div>
   );
 }
