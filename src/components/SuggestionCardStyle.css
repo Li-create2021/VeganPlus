@@ -12,10 +12,27 @@
 .suggestion-body-section {
     height: 100%;
     display: flex;
-    flex-direction: column;
     align-items: flex-start;
+    flex-direction: row-reverse;
+    justify-content: space-between;
     
 }
+
+.suggestion-short-info {
+    align-self: flex-end;
+    margin: 5px;
+    text-align: left;
+}
+
+.suggestion-header {
+    margin: 2px;
+}
+
+.suggestion-total-time {
+    margin: 2px;
+}
+
+
 
 #favorite-btn {
 }

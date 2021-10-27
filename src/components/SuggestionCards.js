@@ -18,8 +18,10 @@ const SuggestionCards = (props) => {
                     className={showIsFavorite ? "isFavorite" : "notFavorite"}>
                 </button>
 
-                <h3 className="suggestion-header">Patatas Bravas</h3>
-                <p className="suggestion-total-time">10min</p>
+                <section className="suggestion-short-info">
+                    <h3 className="suggestion-header">Patatas Bravas</h3>
+                    <p className="suggestion-total-time">10min</p>
+                </section>
             </section>
         </div >
     )
