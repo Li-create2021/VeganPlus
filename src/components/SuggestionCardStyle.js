@@ -19,10 +19,10 @@ const SuggestionCardStyling = {
         border: 2px black solid,
         borderRadius: 5px
     }
-//HEY!! There's a lot of errors on the SuggestionCards.js :)
+
 #favorite {
     backgroundImage: url('https://cdn.gutekueche.de/upload/rezept/5811/patatas-bravas-mit-aioli.jpg')
 }
 }
 
-export default SuggestionCardStyling;
+export default SuggestionCardStyle;
