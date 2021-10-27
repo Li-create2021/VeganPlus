@@ -1,8 +1,9 @@
-
+import { useState } from "react";
+import "./SuggestionCardStyle.css"
 
 const SuggestionCards = (props) => {
 
-    const [showIsFavorite, setShowIsFavorite] = React.useState(props.isFavorite);
+    const [showIsFavorite, setShowIsFavorite] = useState(props.isFavorite);
 
     function handleClickFavorite() {
         setShowIsFavorite(!showIsFavorite);
@@ -10,17 +11,16 @@ const SuggestionCards = (props) => {
 
     return (
         <div className="suggestion-card">
-            <section className="suggestion-head-section">
-                <h3>Patatas Bravas</h3>
-                <p>10min</p>
-            </section>
+            <section className="suggestion-body-section">
+                <button
+                    id="favorite-btn"
+                    onClick={handleClickFavorite}
+                    className={showIsFavorite ? "isFavorite" : "notFavorite"}>
+                </button>
 
-            <button
-                id="favorite"
-                style={isFavorite ? SuggestionCardStyling.isFavorite : SuggestionCardStyling.notFavorite}
-                onClick={handleClickFavorite}
-                className={showIsFavorite ? "isFavorite" : "notFavorite"}>
-            </button>
+                <h3 className="suggestion-header">Patatas Bravas</h3>
+                <p className="suggestion-total-time">10min</p>
+            </section>
         </div >
     )
 }
