@@ -1,5 +1,5 @@
-//filter through dish types and dietery-info
-const FilterDataList = [
+//filter through dish types and dietary-info
+const FilterData = [
     {
         dishType: "Breakfast",
         isSelected: false,
@@ -46,4 +46,4 @@ const FilterDataList = [
     },
 ]
 
-export default FilterDataList;
+export default FilterData;
