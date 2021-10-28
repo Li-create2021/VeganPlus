@@ -1,21 +1,18 @@
 import React from 'react';
+import "./SearchInputImg.css"
 
-function App() {
+function SearchInput(props) {
+    const { searchValue, setSearchValue } = props;
     return (
-        <div style={{
-            backgroundImage: `url("https://unsplash.com/photos/1SPu0KT-Ejg")`
-        }}>
-        </div>
+        <form id="recipe-search">
+            <textarea
+                value={searchValue}
+                type="text"
+                placeholder="Search ingredients and recipes"
+                onChange={(event) => setSearchValue(event.target.value)}
+            />
+        </form>
     );
 }
 
-const SearchInput = () => {
-
-    return (
-        <form className="recipe-search-input">
-            <label for="search">search</label>
-            <input type="search" id="recipe-search" value="" />
-        </form>
-    )
-}
 export default SearchInput;
