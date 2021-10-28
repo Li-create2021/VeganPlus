@@ -2,24 +2,24 @@ const RecipeData = [
     {
         recipeName: "Patatas Bravas",
         description: "Patatas Bravas classic",
-        foodImage: "https://images.unsplash.com/photo-1565599837634-134bc3aadce8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
+        foodImage: "https://images.pexels.com/photos/6642508/pexels-photo-6642508.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
         totalTime: "45min",
         isFavorite: false
     },
     {
-        recipeName: "Patatas Bravas",
-        description: "Patatas Bravas oneSauce",
-        foodImage: "https://images.unsplash.com/photo-1550424557-39930b383cd5?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=687&q=80",
-        totalTime: "45min",
+        recipeName: "Cashew Bowl",
+        description: "Brasilian Cashew Bowl",
+        foodImage: "https://images.pexels.com/photos/3763792/pexels-photo-3763792.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1",
+        totalTime: "35min",
         isFavorite: false
     },
     {
-        recipeName: "Patatas Bravas",
-        description: "Patatas Bravas classic",
-        foodImage: "https://images.unsplash.com/photo-1565599837634-134bc3aadce8?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=735&q=80",
-        totalTime: "45min",
+        recipeName: "Cheesecake",
+        description: "Vegan Cheesecake",
+        foodImage: "https://i.ibb.co/rwgcGdq/msg956242898-5786.jpg",
+        totalTime: "~3h",
         isFavorite: false
-    }
+    },
 ];
 
 export default RecipeData;

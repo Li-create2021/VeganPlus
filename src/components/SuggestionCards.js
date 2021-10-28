@@ -1,7 +1,7 @@
 import { useState } from "react";
-import "./SuggestionCardStyle.css"
+import "./SuggestionCardStyle.css";
 
-const SuggestionCards = (props) => {
+function SuggestionCards(props) {
 
     const [showIsFavorite, setShowIsFavorite] = useState(props.isFavorite);
 
@@ -10,17 +10,16 @@ const SuggestionCards = (props) => {
     }
 
     return (
-        <div className="suggestion-card">
+        <div className="suggestion-card" style={{backgroundSize: 'cover', backgroundImage: `url(${props.foodImage})`}}>
             <section className="suggestion-body-section">
                 <button
-                    id="favorite-btn"
                     onClick={handleClickFavorite}
                     className={showIsFavorite ? "isFavorite" : "notFavorite"}>
                 </button>
 
                 <section className="suggestion-short-info">
-                    <h3 className="suggestion-header">Patatas Bravas</h3>
-                    <p className="suggestion-total-time">10min</p>
+                    <h3 className="suggestion-header">{props.recipeName}</h3>
+                    <p className="suggestion-total-time">{props.totalTime}</p>
                 </section>
             </section>
         </div >
