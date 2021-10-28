@@ -1,5 +1,6 @@
 import React from 'react';
 import "./SearchInputImg.css"
+import Filter from './Filter'
 
 function SearchInput(props) {
     const { searchValue, setSearchValue } = props;
@@ -11,6 +12,7 @@ function SearchInput(props) {
                 placeholder="Search ingredients and recipes"
                 onChange={(event) => setSearchValue(event.target.value)}
             />
+            <Filter />
         </form>
     );
 }

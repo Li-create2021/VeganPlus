@@ -2,9 +2,9 @@ import SuggestionSection from './components/SuggestionSection'
 import RecipeData from './components/RecipeData';
 import SearchInput from './components/SearchInput';
 import { useState } from 'react';
-import FilterData from './components/FilterData';
-import Checkbox from './components/CheckBox';
+import Filter from './components/Filter';
 import NavFooter from './components/NavFooter';
+
 
 
 function App() {
@@ -19,7 +19,7 @@ function App() {
       <footer>
       <NavFooter />
       </footer>
-    
+   
     </div>
 
     
