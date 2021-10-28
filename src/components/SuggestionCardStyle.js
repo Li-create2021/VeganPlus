@@ -13,16 +13,14 @@ const SuggestionCardStyling = {
         backgroundImage: url("https://upload.wikimedia.org/wikipedia/commons/4/4f/Ei-heart.svg"),
         backgroundSize: "100%",
         alignSelf: "flex-start"
+    },
+    suggestionCard: {
+        border: "2px black solid",
+        borderRadius: "5px"
+    },
+    favorite: {
+        backgroundImage: url('https://cdn.gutekueche.de/upload/rezept/5811/patatas-bravas-mit-aioli.jpg')
     }
-
-    suggestion- card {
-        border: 2px black solid,
-        borderRadius: 5px
-    }
-
-#favorite {
-    backgroundImage: url('https://cdn.gutekueche.de/upload/rezept/5811/patatas-bravas-mit-aioli.jpg')
-}
 }
 
 export default SuggestionCardStyle;
