@@ -14,7 +14,7 @@ function SearchInput(props) {
 
     return (
         <form id="recipe-search">
-            <input type="text" placeholder="Search ingredients and recipes" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
+            <input type="text" placeholder="Search ingredients" value={searchValue} onChange={(e) => setSearchValue(e.target.value)} />
             <button onClick={clickHandler}>Filter</button>
             {isVisible && <Filter />}
         </form>

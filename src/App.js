@@ -3,6 +3,7 @@ import RecipeData from './components/RecipeData';
 import SearchInput from './components/SearchInput';
 import { useState } from 'react';
 import NavFooter from './components/NavFooter';
+import './components/NavFooter.css'
 
 
 
@@ -12,6 +13,7 @@ function App() {
   return (
 
     <div className="App">
+      <header><img src="https://i.ibb.co/hFhc0y0/WCS-Project-2.png" alt="" className="logo" /></header>
       <SearchInput searchValue={searchValue} setSearchValue={setSearchValue} />
       <SuggestionSection recipeData={RecipeData} />
 
@@ -19,7 +21,7 @@ function App() {
         <NavFooter />
       </footer>
 
-    </div>
+    </div >
 
 
   );

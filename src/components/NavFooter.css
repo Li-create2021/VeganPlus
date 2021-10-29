@@ -8,3 +8,11 @@
 
   }
 
+  .logo {
+  display: flex;
+  width: 100px;
+  margin: 0;
+  position: left;
+  line-height:none;
+  }
+
