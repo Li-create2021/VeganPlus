@@ -4,7 +4,7 @@ function Recipes() {
     return (
       <>
         <h1>
-        *** Recipes ***
+        * Recipes *
         </h1>
         
       </>

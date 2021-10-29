@@ -6,6 +6,12 @@ import Favorites from './Favorites';
 import MealPlan from './MealPlan';
 import Settings from './Settings';
 import './NavFooter.css';
+import { FaHome } from "react-icons/fa";
+import { BiFoodMenu } from "react-icons/bi";
+import { MdFavoriteBorder } from "react-icons/md";
+import { IoCalendarNumberSharp } from "react-icons/io5";
+import { FaUserCog } from "react-icons/fa";
+
 
 const NavFooter = () => {
 	return (
@@ -14,11 +20,11 @@ const NavFooter = () => {
       
         <ul className="footer">
         
-            <li><NavLink to='/'>Home</NavLink></li>
-            <li><NavLink to='/Recipes'>Recipes</NavLink> </li> 
-            <li><NavLink to='/Favorites'>Favorites</NavLink></li>
-            <li><NavLink to='/MealPlan'>Meal Plan</NavLink></li>
-            <li><NavLink to='/Settings'>Settings</NavLink></li>
+            <li><NavLink to='/'> <FaHome/> </NavLink></li>
+            <li><NavLink to='/Recipes'><BiFoodMenu/></NavLink> </li> 
+            <li><NavLink to='/Favorites'><MdFavoriteBorder/></NavLink></li>
+            <li> <NavLink to='/MealPlan'><IoCalendarNumberSharp/></NavLink></li>
+            <li><NavLink to='/Settings'><FaUserCog/></NavLink></li>
 
         </ul>
         
