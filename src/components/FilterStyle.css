@@ -3,6 +3,8 @@
     list-style: none;
     flex-wrap: wrap;
     justify-content: center;
+    z-index: 20;
+
 }
 
 /*        Desktop mode    media query       */
