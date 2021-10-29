@@ -1,25 +1,19 @@
-import FilterDataList from "./FilterData";
+import FilterData from "./FilterData";
+import './FilterStyle.css';
 
-function FilterData() {
-    const [isSelected, setIsSelected] = React.useState(false);
-
-    function handleIsSelected() {
-        setIsSelected(!isSelected);
-    }
+function Filter(props) {
 
     return (
-        <div>
-            <button onClick={handleIsSelected}>
-                {setIsSelected ? '❎' : ''}
-            </button>
-            <ul>
-                {FilterDataList.map((dish, index) =>
-                    <li key={index}>
+        <div className="recipe-filter">
+            <ul className="filter-list">
+                {FilterData.map((dish, index) =>
+                    < li key={index} style={{ listStyleType: "none", color: "white" }}>
                         <input type="checkbox" /> {dish.dishType}
                     </li>
                 )}
             </ul>
-        </div>
+        </div >
+
     )
 }
 

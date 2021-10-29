@@ -1,0 +1,16 @@
+.filter-list {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 20;
+
+}
+
+/*        Desktop mode    media query       */
+@media screen and (min-width: 860px) {
+    .suggestion-section {
+        display: flex;
+        
+    }
+}
