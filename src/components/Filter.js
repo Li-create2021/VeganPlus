@@ -1,5 +1,5 @@
 import FilterData from "./FilterData";
-import './FilterStyle.css';
+import './SearchInput.css';
 
 function Filter(props) {
 
