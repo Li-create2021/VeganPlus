@@ -1,0 +1,40 @@
+{/*Recipe Search Input Styling*/}
+#recipe-search {
+    display: grid;
+    place-items: center;
+    background-image: url(https://i.ibb.co/6DjLHFh/anna-pelzer-IGf-IGP5-ONV0-unsplash.jpg);
+    background-repeat: no-repeat;
+    width: 90%;
+    min-width: 320px;
+    max-width: 510px;
+    height: 250px;
+    border-radius: 2.5px;
+    align-content: center;
+    margin: 0px 20px 20px 20px;
+    text-align: center;
+}
+
+{/*Filter Styling*/}
+.filter-list {
+    display: flex;
+    list-style: none;
+    flex-wrap: wrap;
+    justify-content: center;
+    z-index: 20;
+
+}
+
+/*        Desktop mode    media query       */
+@media screen and (min-width: 860px) {
+    #recipe-search {
+        display: flex;
+        justify-content: center;
+        place-items: center;
+        width: 100%;
+        margin: 0px 20px 20px 20px;
+    }
+}
+
+
+
+
