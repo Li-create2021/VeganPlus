@@ -1,12 +1,12 @@
 import {useState} from 'react';
 import "./RecipeInformationStyle.css";
 
-function RecipeInformation({ recipe, ingredient }) {
+function RecipeInformation({ recipe }) {
     const ingredientsInformation = recipe.analyzedInstructions[0].steps.map((item) => item.ingredients);
     const recipeSteps = ingredientsInformation.map((step) => step.map((item) => item.name));
-    
+    const ingredient = recipe.nutrition.ingredients;
 
-    console.log(ingredientsInformation.map((step) => step.map((item) => item.name)));
+    console.log(recipe.analyzedInstructions[0].steps);
 
 
     return (
@@ -23,9 +23,14 @@ function RecipeInformation({ recipe, ingredient }) {
             </ul>
 
             <section className="ingedients">
+                <h2>Ingredients:</h2>
                 {ingredient.map((items, index) => {
-                    <li key={index}>{items}</li>
+                   return <li key={index}>{items.amount} {items.unit} {items.name}</li>
                 })}
+            </section>
+
+            <section className="instructions">
+                {}
             </section>
 
         </div>
