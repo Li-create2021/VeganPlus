@@ -3,9 +3,6 @@ import "./RecipeInformationStyle.css";
 function RecipeInformation({ recipe }) {
     const ingredient = recipe.nutrition.ingredients;
 
-    console.log(recipe.analyzedInstructions[0].steps);
-
-
     return (
         <div className="Recipe-information">
             <header>
@@ -22,7 +19,11 @@ function RecipeInformation({ recipe }) {
             <section className="ingedients">
                 <h2>Insgredients:</h2>
                 {ingredient.map((items, index) => {
-                    return <li key={index}>{items.amount} {items.unit} {items.name}</li>
+                    return <li key={index}>
+                                {items.amount} 
+                                {items.unit} 
+                                {items.name}
+                            </li>
                 })}
             </section>
 

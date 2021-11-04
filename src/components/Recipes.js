@@ -4,14 +4,17 @@ function Recipes({recipeData}) {
    
     return (
       <section className="Recipes">
-        {recipeData && recipeData.map((recipe, index) => {
-                return (
-                  <section key={recipe.id}>
-                    <RecipeList recipe={recipe} />
-                  </section>
-                )
-                })}
-        
+        {recipeData && 
+          recipeData.map((recipe, index) => {
+            return (
+
+              <section key={recipe.id}>
+                <RecipeList recipe={recipe} />
+              </section>
+              
+            )
+          })
+        }
       </section>
     );
   }

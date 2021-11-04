@@ -1,14 +1,9 @@
 import { useState } from 'react';
 import RecipeInformation from "./RecipeInformation";
-import "./SuggestionCardStyle.css";
+import "./RecipeListStyle.css";
 
-function RecipeList({ recipe, addIdToArrayOfObjects }) {
+function RecipeList({ recipe }) {
     const [isVisible, setIsVisible] = useState(false);
-
-    // Creates a unique key
-    const generateKey = (pre) => {
-        return `${ pre }_${ new Date().getTime() }`;
-      }
 
     const clickHandler = (event) => {
         event.preventDefault();
@@ -17,24 +12,25 @@ function RecipeList({ recipe, addIdToArrayOfObjects }) {
 
 
     return (
-        <section 
-            key={recipe.id}
-            className="suggestion-card" 
+        <section
+            
+            className="recipe-card" 
             style={{backgroundSize: 'cover', backgroundImage: `url(${recipe.image})`}}
-            onClick={clickHandler} >
+            onClick={clickHandler} 
+        >
 
-            <section className="suggestion-body-section">
-                <section className="suggestion-short-info">
-                    <h3 className="suggestion-header">{recipe.title}</h3>
-                    <p className="suggestion-total-time">{recipe.readyInMinutes}min</p>
+            <section className="recipe-body-section">
+                <section className="recipe-short-info">
+                    <h3 className="recipe-header">{recipe.title}</h3>
+                    <p className="recipe-total-time">{recipe.readyInMinutes}min</p>
                 </section>
             </section>
 
-        {isVisible && 
-            <section key={addIdToArrayOfObjects}>
-                <RecipeInformation recipe={recipe}/> 
-            </section>
-        }
+            {isVisible && 
+                <section key={recipe.id} >
+                    <RecipeInformation recipe={recipe}/> 
+                </section>
+            }
         
         </section>
     )
