@@ -1,9 +1,10 @@
 import {useState} from 'react';
 import "./RecipeInformationStyle.css";
 
-function RecipeInformation({ recipe }) {
+function RecipeInformation({ recipe, ingredient }) {
     const ingredientsInformation = recipe.analyzedInstructions[0].steps.map((item) => item.ingredients);
-    const ingredient = ingredientsInformation.map((step) => step.map((item) => item.name));
+    const recipeSteps = ingredientsInformation.map((step) => step.map((item) => item.name));
+    
 
     console.log(ingredientsInformation.map((step) => step.map((item) => item.name)));
 
