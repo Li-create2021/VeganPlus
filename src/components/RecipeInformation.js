@@ -1,12 +1,9 @@
-import {useState} from 'react';
 import "./RecipeInformationStyle.css";
 
-function RecipeInformation({ recipe, ingredient }) {
-    const ingredientsInformation = recipe.analyzedInstructions[0].steps.map((item) => item.ingredients);
-    const recipeSteps = ingredientsInformation.map((step) => step.map((item) => item.name));
-    
+function RecipeInformation({ recipe }) {
+    const ingredient = recipe.nutrition.ingredients;
 
-    console.log(ingredientsInformation.map((step) => step.map((item) => item.name)));
+    console.log(recipe.analyzedInstructions[0].steps);
 
 
     return (
@@ -15,7 +12,7 @@ function RecipeInformation({ recipe, ingredient }) {
                 <h1>{recipe.title}</h1>
                 <img src={recipe.image} alt={recipe.title} />
             </header>
-            
+
             <ul className="info-overview">
                 <li>Total time: {recipe.readyInMinutes}min</li>
                 <li>Health score: {recipe.healthScore}</li>
@@ -23,8 +20,20 @@ function RecipeInformation({ recipe, ingredient }) {
             </ul>
 
             <section className="ingedients">
+                <h2>Ingredients:</h2>
                 {ingredient.map((items, index) => {
-                    <li key={index}>{items}</li>
+                    return <li key={index}>{items.amount} {items.unit} {items.name}</li>
+                })}
+            </section>
+
+            <section className="instructions">
+                {recipe.analyzedInstructions[0].steps.map((item, index) => {
+                    return (
+                        <div key={index}>
+                            <h3 key={index}>Step {item.number}</h3>
+                            <p key={index}>{item.step}</p>
+                        </div>
+                    )
                 })}
             </section>
 
