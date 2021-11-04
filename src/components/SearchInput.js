@@ -1,34 +1,16 @@
 import "./SearchInput.css"
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import RecipeList from './RecipeList';
 import FilterData from './FilterData';
 
 function SearchInput(props) {
-    const { recipeData, setRecipeData } = props;
+    const { recipeData} = props;
     const [searchValue, setSearchValue] = useState("");
     const [isVisible, setIsVisible] = useState(false);
-    const [mealData, setMealData] = useState([]);
     const [title, setTitle] = useState();
     const [checkbox, setCheckbox] = useState(FilterData);
 
-    /*
-    let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true`
-
-    useEffect(() => {
-        fetch(
-            `https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true`
-
-        )
-            .then((response) => response.json())
-            .then((data) => {
-                setMealData(data.results);
-                //console.log(data.results);
-            })
-            .catch(() => {
-                console.log('error');
-            });
-    }, [])
-    */
+    const [filteredRecipeData, setFilteredRecipeData] = useState();
 
     /*Event Handler for Filter List Display*/
     const clickHandler = (event) => {
@@ -41,12 +23,6 @@ function SearchInput(props) {
         const newCheckbox = [...checkbox];
         newCheckbox[index].isSelected = !newCheckbox[index].isSelected;
         setCheckbox(newCheckbox);
-    }
-
-    //Prevents page from rendering with each click on Search Button
-    const searchButton = (event) => {
-        event.preventDefault();
-        SearchInput();
     }
 
 
@@ -83,10 +59,10 @@ function SearchInput(props) {
 
             <div className="recipes">
 
-                {recipeData && recipeData.map((recipe) => {
-                    searchValue && recipe.filter((item) => {
-                        item.title.includes(`${searchValue}`)
-                        return < RecipeList key={recipe.id} title={title} setTitle={setTitle} recipe={recipe} />
+                {recipeData && recipeData.map((recipe, index) => {
+                    searchValue && recipeData.filter((item) => {
+                        setFilteredRecipeData(item.title.includes(`${searchValue}`))
+                        return < RecipeList key={index} title={title} setTitle={setTitle} filteredRecipeData={filteredRecipeData} />
                     })
                     return <RecipeList key={recipe.id} title={title} setTitle={setTitle} recipe={recipe} />
                 })}
@@ -98,3 +74,13 @@ function SearchInput(props) {
 }
 
 export default SearchInput;
+
+/*
+{recipeData && recipeData.map((recipe) => {
+    searchValue && recipe.filter((item) => {
+        item.title.includes(`${searchValue}`)
+        return < RecipeList key={recipe.id} title={title} setTitle={setTitle} recipe={recipe} />
+    })
+    return <RecipeList key={recipe.id} title={title} setTitle={setTitle} recipe={recipe} />
+})}
+*/
