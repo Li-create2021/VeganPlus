@@ -1,13 +1,33 @@
+import RecipeList from "./RecipeList";
 
 
-function Recipes() {
+
+import {useHistory} from "react-router-dom"
+
+function Recipes({recipeData}) {
+ 
+ /*
+  function getRecipeInformation() {
+    let history = useHistory();
+  
+    function handleClick() {
+      history.push("/home/RecipeInformation");
+    }
+*/
+  
     return (
-      <>
-        <h1>
-        * Recipes *
-        </h1>
+      <section className="Recipes">
+        {recipeData && recipeData.map((recipe, index) => {
+                return (
+                  <main>
+                    <RecipeList recipe={recipe} key={index}/>
+                    
+                    
+                  </main>           
+                )
+                })}
         
-      </>
+      </section>
     );
   }
   
