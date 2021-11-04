@@ -32,7 +32,7 @@ function SearchInput(props) {
         setIsVisible(!isVisible);
     }
 
-    {/*Manipulates the state of checkbox to enable the funcionality on the checkboxes*/ }
+    {/*Manipulates the state of checkbox to enable the filter funcionality on the checkboxes*/ }
     const checkboxHandler = (index) => {
         const newCheckbox = [...checkbox];
         newCheckbox[index].isSelected = !newCheckbox[index].isSelected;
