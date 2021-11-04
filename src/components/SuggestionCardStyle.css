@@ -3,7 +3,8 @@
     width: 90%;
     min-width: 320px;
     max-width: 510px;
-    height: 180px;
+    height: auto;
+    min-height: 180px;
     border-radius: 2.5px;
     color: white;
     margin: 10px 0;

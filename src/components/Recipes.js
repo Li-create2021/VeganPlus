@@ -1,13 +1,22 @@
+import {useState} from "react"
+import RecipeList from "./RecipeList";
 
+function Recipes({recipeData}) {
 
-function Recipes() {
+  
     return (
-      <>
-        <h1>
-        * Recipes *
-        </h1>
+      <section className="Recipes">
+        {recipeData && recipeData.map((recipe, index) => {
+                return (
+                  <main>
+                    <RecipeList recipe={recipe} key={index}/>
+                    
+                    
+                  </main>           
+                )
+                })}
         
-      </>
+      </section>
     );
   }
   
