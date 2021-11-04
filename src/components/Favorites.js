@@ -1,10 +1,10 @@
+
 function Favorites() {
-  return (
-    <>
-
-
-    </>
-  );
-}
-
-export default Favorites;
+    return (
+      <>
+      <h1> favorites componenent </h1>
+      </>
+    );
+  }
+  
+  export default Favorites;

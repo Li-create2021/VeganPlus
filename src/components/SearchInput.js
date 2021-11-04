@@ -4,7 +4,7 @@ import RecipeList from './RecipeList';
 import FilterData from './FilterData';
 
 function SearchInput(props) {
-    const { recipeData} = props;
+    const { recipeData, addIdToArrayOfObjects } = props;
     const [searchValue, setSearchValue] = useState("");
     const [isVisible, setIsVisible] = useState(false);
     const [title, setTitle] = useState();
@@ -64,7 +64,11 @@ function SearchInput(props) {
                         setFilteredRecipeData(item.title.includes(`${searchValue}`))
                         return < RecipeList key={index} title={title} setTitle={setTitle} filteredRecipeData={filteredRecipeData} />
                     })
-                    return <RecipeList key={recipe.id} title={title} setTitle={setTitle} recipe={recipe} />
+                    return (
+                        <section key={recipe.id}>
+                            <RecipeList addIdToArrayOfObjects={addIdToArrayOfObjects} title={title} setTitle={setTitle} recipe={recipe} />
+                        </section>
+                    )
                 })}
 
             </div>

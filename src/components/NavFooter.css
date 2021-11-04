@@ -1,19 +1,22 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); /*  ???  */
+
+
 .footer {
 
+    margin:0;
+    padding:0;
     display: flex;
     justify-content:space-around;
     list-style: none;
     text-decoration: none;
-    background-color: rgb(247, 236, 214);
+    background-color: rgb(255, 255, 255);
 
   }
 
   .logo {
-  display: flex;
-  width: 100px;
-  margin: 0;
-  position: left;
-  line-height:none;
-  }
-
+    display: flex;
+    width: 100px;
+    margin: 0;
+    position: left;
+    line-height:none;
+    }

@@ -4,9 +4,11 @@ function Recipes({recipeData}) {
    
     return (
       <section className="Recipes">
-        {recipeData && recipeData.map((recipe) => {
+        {recipeData && recipeData.map((recipe, index) => {
                 return (
-                    <RecipeList key={recipe.id} recipe={recipe} />
+                  <section key={recipe.id}>
+                    <RecipeList recipe={recipe} />
+                  </section>
                 )
                 })}
         
