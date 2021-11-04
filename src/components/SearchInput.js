@@ -1,17 +1,30 @@
 import React from 'react';
 import "./SearchInput.css"
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import FilterData from "./FilterData";
 
 function SearchInput(props) {
-    const { searchValue, setSearchValue } = props;
+    const { searchValue, setSearchValue, checkbox, setCheckbox } = props;
     const [isVisible, setIsVisible] = useState(false);
     const [mealData, setMealData] = useState(null);
-    {/*const [dishType, setDishType] = useState(Breakfast);
-    const [ingredient, setIngredient] = useState("");*/}
+    const [recipeData, setRecipeData] = useState(null);
 
-    {/*function handleChange(e) {
-    setMealIngredient(e.target.value);*/}
+    let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true`
+
+    useEffect(() => {
+        fetch(
+            `https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true`
+
+        )
+            .then((response) => response.json())
+            .then((data) => {
+                setMealData(data.results);
+                console.log(data.results);
+            })
+            .catch(() => {
+                console.log('error');
+            });
+    }, [])
 
     {/*Event Handler for Filter List Display*/ }
     const clickHandler = (event) => {
@@ -19,9 +32,16 @@ function SearchInput(props) {
         setIsVisible(!isVisible);
     }
 
+    {/*Manipulates the state of checkbox to enable the funcionality on the checkboxes*/ }
+    const checkboxHandler = (index) => {
+        const newCheckbox = [...checkbox];
+        newCheckbox[index].isSelected = !newCheckbox[index].isSelected;
+        setCheckbox(newCheckbox);
+
+    }
     {/*Search input form*/ }
     return (
-        <form id="recipe-search" style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})` }}>
+        <form id="recipe-search">
             <input
                 type="text"
                 placeholder="Search ingredients"
@@ -30,17 +50,17 @@ function SearchInput(props) {
             <button onClick={clickHandler}>Filter</button>
             {isVisible &&
                 <div className="recipe-filter">
-                    <ul className="filter-list">
-                        {FilterData.map((dish, index) =>
+                    <ol className="filter-list">
+                        {checkbox.map((dish, index) =>
                             < li key={index} style={{ listStyleType: "none", color: "white" }}>
-                                <input type="checkbox" /> {dish.dishType}
+                                <input type="checkbox" onChange={() => checkboxHandler(index)} checked={dish.isSelected} /> {dish.dishType}
                             </li>
                         )}
-                    </ul>
+                    </ol>
                 </div >}
         </form>
     );
 
 }
-
+{/*<input type="checkbox" onChange={() => setChecked(!checked)}/> */ }
 export default SearchInput;
