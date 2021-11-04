@@ -3,8 +3,10 @@
 }
 
 .Recipe-information {
-    width: 100vw; 
-    height: 100vh;
+    min-width: 100vw; 
+    width: auto;
+    min-height: 100vh;
+    height: auto;
     background-color: white;
     color: black;
 }

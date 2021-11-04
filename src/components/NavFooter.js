@@ -11,6 +11,7 @@ import { BiFoodMenu } from "react-icons/bi";
 import { MdFavoriteBorder } from "react-icons/md";
 import { IoCalendarNumberSharp } from "react-icons/io5";
 import { FaUserCog } from "react-icons/fa";
+import {nanoid} from 'nanoid';
 
 
 const NavFooter = () => {
@@ -20,11 +21,11 @@ const NavFooter = () => {
       
         <ul className="footer">
         
-            <li><NavLink to='/'> <FaHome/> </NavLink></li>
-            <li><NavLink to='/Recipes'><BiFoodMenu/></NavLink> </li> 
-            <li><NavLink to='/Favorites'><MdFavoriteBorder/></NavLink></li>
-            <li> <NavLink to='/MealPlan'><IoCalendarNumberSharp/></NavLink></li>
-            <li><NavLink to='/Settings'><FaUserCog/></NavLink></li>
+            <li key={nanoid()}><NavLink to='/'> <FaHome/> </NavLink></li>
+            <li key={nanoid()}><NavLink to='/Recipes'><BiFoodMenu/></NavLink> </li> 
+            <li key={nanoid()}><NavLink to='/Favorites'><MdFavoriteBorder/></NavLink></li>
+            <li key={nanoid()}> <NavLink to='/MealPlan'><IoCalendarNumberSharp/></NavLink></li>
+            <li key={nanoid()}><NavLink to='/Settings'><FaUserCog/></NavLink></li>
 
         </ul>
         

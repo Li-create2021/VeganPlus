@@ -1,9 +1,7 @@
-import {useState} from 'react';
+import { nanoid } from 'nanoid';
 import "./RecipeInformationStyle.css";
 
 function RecipeInformation({ recipe }) {
-    const ingredientsInformation = recipe.analyzedInstructions[0].steps.map((item) => item.ingredients);
-    const recipeSteps = ingredientsInformation.map((step) => step.map((item) => item.name));
     const ingredient = recipe.nutrition.ingredients;
 
     console.log(recipe.analyzedInstructions[0].steps);
@@ -17,20 +15,27 @@ function RecipeInformation({ recipe }) {
             </header>
             
             <ul className="info-overview">
-                <li>Total time: {recipe.readyInMinutes}min</li>
-                <li>Health score: {recipe.healthScore}</li>
-                <li>Servings: {recipe.servings}</li>
+                <li key={nanoid()}>Total time: {recipe.readyInMinutes}min</li>
+                <li key={nanoid()}>Health score: {recipe.healthScore}</li>
+                <li key={nanoid()}>Servings: {recipe.servings}</li>
             </ul>
 
             <section className="ingedients">
                 <h2>Ingredients:</h2>
-                {ingredient.map((items, index) => {
-                   return <li key={index}>{items.amount} {items.unit} {items.name}</li>
+                {ingredient.map((items) => {
+                   return <li key={nanoid()}>{items.amount} {items.unit} {items.name}</li>
                 })}
             </section>
 
             <section className="instructions">
-                {}
+                {recipe.analyzedInstructions[0].steps.map((item) => {
+                    return (
+                        <>
+                        <h3 key={nanoid()}>Step {item.number}</h3>
+                        <p key={nanoid()}>{item.step}</p>
+                        </>
+                        )
+                })}
             </section>
 
         </div>
