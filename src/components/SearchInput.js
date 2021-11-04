@@ -1,16 +1,11 @@
-import React from 'react';
 import "./SearchInput.css"
-import { useState, useEffect } from 'react';
-import FilterData from "./FilterData";
+import React, { useState, useEffect } from 'react';
 
 function SearchInput(props) {
     const { searchValue, setSearchValue, checkbox, setCheckbox } = props;
     const [isVisible, setIsVisible] = useState(false);
     const [mealData, setMealData] = useState(null);
-    const [recipeData, setRecipeData] = useState(null);
-
-    let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true`
-
+    console.log(mealData);
     useEffect(() => {
         fetch(
             `https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true`
@@ -26,20 +21,20 @@ function SearchInput(props) {
             });
     }, [])
 
-    {/*Event Handler for Filter List Display*/ }
+    //Event Handler for Filter List Display
     const clickHandler = (event) => {
         event.preventDefault();
         setIsVisible(!isVisible);
     }
 
-    {/*Manipulates the state of checkbox to enable the funcionality on the checkboxes*/ }
+    /*Manipulates the state of checkbox to enable the filter funcionality on the checkboxes*/ 
     const checkboxHandler = (index) => {
         const newCheckbox = [...checkbox];
         newCheckbox[index].isSelected = !newCheckbox[index].isSelected;
         setCheckbox(newCheckbox);
 
     }
-    {/*Search input form*/ }
+    /*Search input form*/ 
     return (
         <form id="recipe-search">
             <input
@@ -47,7 +42,7 @@ function SearchInput(props) {
                 placeholder="Search ingredients"
                 value={searchValue}
                 onChange={(e) => setSearchValue(e.target.value)} />
-            <button onClick={clickHandler}>Filter</button>
+            <button onClick={clickHandler}>Search</button>
             {isVisible &&
                 <div className="recipe-filter">
                     <ol className="filter-list">
@@ -62,5 +57,5 @@ function SearchInput(props) {
     );
 
 }
-{/*<input type="checkbox" onChange={() => setChecked(!checked)}/> */ }
+
 export default SearchInput;

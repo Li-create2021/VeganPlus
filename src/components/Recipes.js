@@ -1,8 +1,5 @@
 import RecipeList from "./RecipeList";
-
-
-
-import {useHistory} from "react-router-dom"
+import {nanoid} from 'nanoid';
 
 function Recipes({recipeData}) {
  
@@ -17,10 +14,10 @@ function Recipes({recipeData}) {
   
     return (
       <section className="Recipes">
-        {recipeData && recipeData.map((recipe, index) => {
+        {recipeData && recipeData.map((recipe) => {
                 return (
                   <main>
-                    <RecipeList recipe={recipe} key={index}/>
+                    <RecipeList recipe={recipe} key={nanoid()}/>
                     
                     
                   </main>           

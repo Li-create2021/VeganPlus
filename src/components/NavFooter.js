@@ -4,6 +4,7 @@ import './NavFooter.css';
 import { FaHome } from "react-icons/fa";
 import { BiFoodMenu } from "react-icons/bi";
 import { MdFavoriteBorder } from "react-icons/md";
+import { nanoid } from 'nanoid';
 
 
 const NavFooter = () => {
@@ -13,15 +14,15 @@ const NavFooter = () => {
       
         <ul className="footer">
                 
-                    <li>
+                    <li key={nanoid()}>
                         <Link to="/">  <FaHome size={25} color={"#009999"}/></Link>
                     </li>
                     
-                    <li>                
+                    <li key={nanoid()}>                
                         <Link to="/Recipes"> <BiFoodMenu size={25} color={"#009999"}/></Link>
                     </li>
 
-                    <li>
+                     <li key={nanoid()}>
                         <Link to="/Favorites">  <MdFavoriteBorder size={25} color={"#009999"}/></Link>
                     </li>
        

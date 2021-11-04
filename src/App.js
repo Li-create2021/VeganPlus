@@ -1,11 +1,12 @@
 import SearchInput from './components/SearchInput';
 import { useState, useEffect } from 'react';
-import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import Recipes from './components/Recipes';
 import Favorites from './components/Favorites';
 import './components/NavFooter.css'
 import NavFooter from './components/NavFooter';
 import FilterData from './components/FilterData';
+import {nanoid} from 'nanoid';
 
 function App() {
   const [searchValue, setSearchValue] = useState("");
@@ -14,11 +15,9 @@ function App() {
 
  // let apiUrl = `https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true`
 
-  let apiUrl =  `https://api.spoonacular.com/recipes/complexSearch?apiKey=37cd85a2df4c426685057ae2162f7e75&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true&intolerances=gluten`;
-
   useEffect (() => { 
       fetch(
-        apiUrl
+        `https://api.spoonacular.com/recipes/complexSearch?apiKey=37cd85a2df4c426685057ae2162f7e75&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true&intolerances=gluten`
       
       )
       .then((response) => response.json())
@@ -43,11 +42,11 @@ function App() {
 
           <Switch>
 
-            <Route  exact path="/"><Recipes recipeData={recipeData} /></Route>
+            <Route  exact path="/"><Recipes recipeData={recipeData} key={nanoid()} /></Route>
             
-            <Route path="/Recipes"> <Recipes recipeData={recipeData} /> </Route>
+            <Route path="/Recipes"> <Recipes recipeData={recipeData} key={nanoid()} /> </Route>
             
-            <Route path="/Favorites"> <Favorites recipeData={recipeData} /> </Route>
+            <Route path="/Favorites"> <Favorites recipeData={recipeData} key={nanoid()} /> </Route>
            
            </Switch>
 

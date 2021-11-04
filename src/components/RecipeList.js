@@ -11,7 +11,6 @@ function RecipeList({ recipe }) {
       setIsVisible(!isVisible);
   }
 
-   console.log(recipe.title)
 
     return (
         <main 
