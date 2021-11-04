@@ -1,6 +1,7 @@
 import RecipeList from "./RecipeList";
 
 
+
 function Recipes({recipeData}) {
  
  /*
@@ -14,13 +15,9 @@ function Recipes({recipeData}) {
   
     return (
       <section className="Recipes">
-        {recipeData && recipeData.map((recipe, index) => {
+        {recipeData && recipeData.map((recipe) => {
                 return (
-                  <main>
-                    <RecipeList recipe={recipe} key={index}/>
-                    
-                    
-                  </main>           
+                    <RecipeList key={recipe.id} recipe={recipe} />
                 )
                 })}
         

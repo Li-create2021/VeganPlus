@@ -1,7 +1,7 @@
 import {useState} from 'react';
 import RecipeInformation from "./RecipeInformation";
 import "./SuggestionCardStyle.css";
-import { nanoid } from 'nanoid';
+import {nanoid} from 'nanoid'
 
 function RecipeList({ recipe }) {
     const [isVisible, setIsVisible] = useState(false);
@@ -14,7 +14,7 @@ function RecipeList({ recipe }) {
    console.log(recipe.title)
 
     return (
-        <main 
+        <section 
             className="suggestion-card" 
             style={{backgroundSize: 'cover', backgroundImage: `url(${recipe.image})`}}
             onClick={clickHandler} >
@@ -27,9 +27,9 @@ function RecipeList({ recipe }) {
                     <p className="suggestion-total-time">{recipe.readyInMinutes}min</p>
                 </section>
             </section>
-        {isVisible && <RecipeInformation key={nanoid()} recipe={recipe}/> }
+        {isVisible && <RecipeInformation recipe={recipe}/> }
         
-        </main>
+        </section>
     )
 
 }

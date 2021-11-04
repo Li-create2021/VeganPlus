@@ -3,6 +3,11 @@ import "./RecipeInformationStyle.css";
 
 function RecipeInformation({ recipe }) {
     const ingredient = recipe.nutrition.ingredients;
+    
+    // Creates a unique key 
+    const generateKey = (pre) => {
+    return `${ pre }_${ new Date().getTime() }`;
+  }
 
     console.log(recipe.analyzedInstructions[0].steps);
 
@@ -15,25 +20,25 @@ function RecipeInformation({ recipe }) {
             </header>
             
             <ul className="info-overview">
-                <li key={nanoid()}>Total time: {recipe.readyInMinutes}min</li>
-                <li key={nanoid()}>Health score: {recipe.healthScore}</li>
-                <li key={nanoid()}>Servings: {recipe.servings}</li>
+                <li>Total time: {recipe.readyInMinutes}min</li>
+                <li>Health score: {recipe.healthScore}</li>
+                <li>Servings: {recipe.servings}</li>
             </ul>
 
             <section className="ingedients">
                 <h2>Ingredients:</h2>
-                {ingredient.map((items) => {
-                   return <li key={nanoid()}>{items.amount} {items.unit} {items.name}</li>
+                {ingredient.map((items, index) => {
+                   return <li key={index}>{items.amount} {items.unit} {items.name}</li>
                 })}
             </section>
 
             <section className="instructions">
-                {recipe.analyzedInstructions[0].steps.map((item) => {
+                {recipe.analyzedInstructions[0].steps.map((item, index) => {
                     return (
-                        <>
-                        <h3 key={nanoid()}>Step {item.number}</h3>
-                        <p key={nanoid()}>{item.step}</p>
-                        </>
+                        <div key={index}>
+                            <h3 key={index}>Step {item.number}</h3>
+                            <p key={index}>{item.step}</p>
+                        </div>
                         )
                 })}
             </section>

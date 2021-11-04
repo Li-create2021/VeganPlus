@@ -1,6 +1,7 @@
 import React from 'react';
 import SuggestionCards from './SuggestionCards';
 import "./SuggestionCardStyle.css";
+import { nanoid } from 'nanoid';
 
 const SuggestionSection = ({ recipeData }) => {
     console.log(recipeData)
@@ -10,8 +11,8 @@ const SuggestionSection = ({ recipeData }) => {
         <div className="suggestion-section">
             <h2 className="suggestion-header">Recipe Suggestions</h2>
             <section className="suggestion-selection">
-                {recipeData.map((recipe, index) => {
-                return <SuggestionCards key={index} {...recipe}/>
+                {recipeData.map((recipe) => {
+                return <SuggestionCards key={nanoid()} {...recipe}/>
                 })}
             </section>
         </div>

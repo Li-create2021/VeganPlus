@@ -21,7 +21,7 @@ const NavFooter = () => {
       
         <ul className="footer">
         
-            <li key={nanoid()}><NavLink to='/'> <FaHome/> </NavLink></li>
+            <li key={nanoid()}><NavLink  to='/'> <FaHome/> </NavLink></li>
             <li key={nanoid()}><NavLink to='/Recipes'><BiFoodMenu/></NavLink> </li> 
             <li key={nanoid()}><NavLink to='/Favorites'><MdFavoriteBorder/></NavLink></li>
             <li key={nanoid()}> <NavLink to='/MealPlan'><IoCalendarNumberSharp/></NavLink></li>
