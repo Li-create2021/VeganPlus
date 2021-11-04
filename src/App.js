@@ -10,7 +10,7 @@ function App() {
   const [searchValue, setSearchValue] = useState("");
   const [recipeData, setRecipesData] = useState(null);
 
-  const apiUrl =  `https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true&intolerances=gluten`;
+  const apiUrl =  `https://api.spoonacular.com/recipes/complexSearch?apiKey=37cd85a2df4c426685057ae2162f7e75&diet=vegan&instructionsRequired=true&addRecipeInformation=true&addRecipeNutrition=true&sortDirection=asc&number=10&limitLicense=true&intolerances=gluten`;
 
   useEffect (() => { 
       fetch(

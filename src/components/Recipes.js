@@ -1,8 +1,19 @@
-import {useState} from "react"
 import RecipeList from "./RecipeList";
 
-function Recipes({recipeData}) {
 
+
+import {useHistory} from "react-router-dom"
+
+function Recipes({recipeData}) {
+ 
+ /*
+  function getRecipeInformation() {
+    let history = useHistory();
+  
+    function handleClick() {
+      history.push("/home/RecipeInformation");
+    }
+*/
   
     return (
       <section className="Recipes">
