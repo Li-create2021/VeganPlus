@@ -1,11 +1,7 @@
-import { nanoid } from 'nanoid';
 import "./RecipeInformationStyle.css";
 
 function RecipeInformation({ recipe }) {
     const ingredient = recipe.nutrition.ingredients;
-
-    console.log(recipe.analyzedInstructions[0].steps);
-
 
     return (
         <div className="Recipe-information">
@@ -13,28 +9,32 @@ function RecipeInformation({ recipe }) {
                 <h1>{recipe.title}</h1>
                 <img src={recipe.image} alt={recipe.title} />
             </header>
-            
+
             <ul className="info-overview">
-                <li key={nanoid()}>Total time: {recipe.readyInMinutes}min</li>
-                <li key={nanoid()}>Health score: {recipe.healthScore}</li>
-                <li key={nanoid()}>Servings: {recipe.servings}</li>
+                <li>Total time: {recipe.readyInMinutes}min</li>
+                <li>Health score: {recipe.healthScore}</li>
+                <li>Servings: {recipe.servings}</li>
             </ul>
 
             <section className="ingedients">
-                <h2>Ingredients:</h2>
-                {ingredient.map((items) => {
-                   return <li key={nanoid()}>{items.amount} {items.unit} {items.name}</li>
+                <h2>Insgredients:</h2>
+                {ingredient.map((items, index) => {
+                    return <li key={`${index}147`}>
+                                {items.amount} 
+                                {items.unit} 
+                                {items.name}
+                            </li>
                 })}
             </section>
 
             <section className="instructions">
-                {recipe.analyzedInstructions[0].steps.map((item) => {
+                {recipe.analyzedInstructions[0].steps.map((item, index) => {
                     return (
-                        <>
-                        <h3 key={nanoid()}>Step {item.number}</h3>
-                        <p key={nanoid()}>{item.step}</p>
-                        </>
-                        )
+                        <div key={`${index}741`}>
+                            <h3>Step {item.number}</h3>
+                            <p>{item.step}</p>
+                        </div>
+                    )
                 })}
             </section>
 

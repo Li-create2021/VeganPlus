@@ -1,0 +1,19 @@
+
+/*this could be used to wrap the home page elements to center but need to find a way to exclude header and footer*/
+.wrapper {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-content: center;
+    align-items: center;
+}
+
+.footer {
+    height: auto;
+    width: 100%;
+    bottom: 0;
+    text-align: center;
+    margin: 0 0 0 -15px;
+    border-top: 1px solid #e7eaec;
+    background-color: #ffffff;
+}

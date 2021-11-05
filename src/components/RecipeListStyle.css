@@ -1,5 +1,8 @@
-/*          Suggestion Card style  -- general   */
-.suggestion-card {
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
+
+/*          Recipe Card style  -- general   */
+
+.recipe-card {
     width: 90%;
     min-width: 320px;
     max-width: 510px;
@@ -11,15 +14,16 @@
     text-align: center;
 }
 
+
 /*       To adjust cards inner layout        */
 
-.suggestion-section {  /**  SuggestionSection !!!!   **/
+.recipe-section { 
     display: flex;
     flex-flow: column wrap;
     align-items: center;
 }
 
-.suggestion-body-section {
+.recipe-body-section {
     height: 100%;
     display: flex;
     align-items: flex-start;
@@ -27,22 +31,23 @@
     justify-content: space-between;
 }
 
-.suggestion-short-info {
+.recipe-short-info {
     align-self: flex-end;
     margin: 5px;
     text-align: left;
 }
 
-.suggestion-header {
+.recipe-header {
     margin: 2px;
 }
 
-.suggestion-total-time {
+.recipe-total-time {
     margin: 2px;
 }
 
 
 /*           Favorite button                 */
+
 .isFavorite {
     width: 40px;
     height: 40px;
@@ -61,8 +66,9 @@
 
 
 /*        Desktop mode    media query       */
+
 @media screen and (min-width: 860px) {
-    .suggestion-section {
+    .recipe-section {
         display: flex;
         
     }
