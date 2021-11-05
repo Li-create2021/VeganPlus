@@ -19,7 +19,7 @@ function RecipeInformation({ recipe }) {
             <section className="ingedients">
                 <h2>Insgredients:</h2>
                 {ingredient.map((items, index) => {
-                    return <li key={index}>
+                    return <li key={`${index}147`}>
                                 {items.amount} 
                                 {items.unit} 
                                 {items.name}
@@ -30,7 +30,7 @@ function RecipeInformation({ recipe }) {
             <section className="instructions">
                 {recipe.analyzedInstructions[0].steps.map((item, index) => {
                     return (
-                        <div>
+                        <div key={`${index}741`}>
                             <h3>Step {item.number}</h3>
                             <p>{item.step}</p>
                         </div>

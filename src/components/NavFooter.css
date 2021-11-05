@@ -3,6 +3,8 @@
  /* CSS for the navbar displayed at the bottom of all the pages */
 .footer {
 
+    position: sticky;
+
     margin:0;
     padding:0;
     display: flex;

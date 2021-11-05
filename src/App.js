@@ -5,10 +5,11 @@ import Recipes from './components/Recipes';
 import Favorites from './components/Favorites';
 import NavFooter from './components/NavFooter';
 import axios from 'axios';
+import {nanoid} from 'nanoid';
 
 function App() {
   const [recipeData, setRecipesData] = useState(null);
-/* THIS NEEDS TO BE REVIEWED. IT'S BLOCKING THE DATA SOMEHOW
+/* THIS NEEDS TO BE REVIEWED. IT'S BLOCKING THE DATA SOMEHOW*/
 
   const addIdToArrayOfObjects = (array) => {
 		return array.map(element => ({
@@ -16,7 +17,7 @@ function App() {
 			id: nanoid()  // a function that returns an unique id. Can be nanoid() since it's gonna run only once
 		}))
 	}
-*/
+
 
   useEffect (() => { 
       const source = axios.CancelToken.source();
@@ -29,11 +30,11 @@ function App() {
 
       .then((res) => res.data)
 
-      //.then((data) => addIdToArrayOfObjects(data))
+     .then((data) => addIdToArrayOfObjects(data.results))
 
       .then((data) => {
-        setRecipesData(data.results);
-        console.log(data.results);
+        setRecipesData(data);
+        console.log(data);
       })
 
       .catch(() => {

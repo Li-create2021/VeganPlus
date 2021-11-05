@@ -27,7 +27,7 @@ function RecipeList({ recipe }) {
             </section>
 
             {isVisible && 
-                <section key={recipe.id} >
+                <section >
                     <RecipeInformation recipe={recipe}/> 
                 </section>
             }

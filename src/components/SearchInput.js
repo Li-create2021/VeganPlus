@@ -10,8 +10,6 @@ function SearchInput(props) {
     const [title, setTitle] = useState();
     const [checkbox, setCheckbox] = useState(FilterData);
 
-    const [filteredRecipeData, setFilteredRecipeData] = useState();
-
     /*Event Handler for Filter List Display*/
     const clickHandler = (event) => {
         event.preventDefault();
@@ -37,7 +35,6 @@ function SearchInput(props) {
                     autoComplete="Off"
                     value={searchValue}
                     onChange={(e) => {
-                        e.preventDefault();
                         setSearchValue(e.target.value)
                     }} />
 
@@ -66,24 +63,19 @@ function SearchInput(props) {
             </form>
 
             <div className="recipes">
-
-                {recipeData && 
-                    recipeData.map((recipe, index) => {
-
-                        searchValue && recipeData.filter((item) => {
-                        setFilteredRecipeData(item.title.includes(`${searchValue}`))
-                        return < RecipeList key={index} 
-                                            title={title} 
-                                            setTitle={setTitle} 
-                                            filteredRecipeData={filteredRecipeData} />
-                    })
-
-                    return (
-                        <section key={recipe.id}>
-                            <RecipeList title={title} setTitle={setTitle} recipe={recipe} />
-                        </section>
-                    )
-                })}
+            {recipeData && recipeData.filter(item => {
+                    // what are your conditions?
+                    // if input field is empty and no checkboxes are checked  then return true
+                    
+                    
+                return searchValue ? item.title.includes({searchValue}) : (!searchValue ? true : null)
+                        
+                    
+                }).map(recipe => (
+                    <section key={recipe.id}>
+                        <RecipeList title={title} setTitle={setTitle} recipe={recipe} />
+                    </section>
+                ))}
 
             </div>
 
