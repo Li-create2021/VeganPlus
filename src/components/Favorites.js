@@ -4,7 +4,7 @@
 function Favorites() {
     return (
       <>
-      <h1> </h1>
+      <h1> ... </h1>
       </>
     );
   }

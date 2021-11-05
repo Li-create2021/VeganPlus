@@ -60,7 +60,7 @@ function App() {
 
              <Switch>
 
-              <Route  exact path="/"><Recipes recipeData={recipeData} /></Route>
+              <Route  exact path="/"></Route>
               
               <Route path="/Recipes"> <Recipes recipeData={recipeData} /> </Route>
               
