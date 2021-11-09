@@ -9,7 +9,9 @@ import {nanoid} from 'nanoid';
 
 function App() {
   const [recipeData, setRecipesData] = useState(null);
-/* THIS NEEDS TO BE REVIEWED. IT'S BLOCKING THE DATA SOMEHOW*/
+  const [isSearchValue, setIsSearchValue] = useState(true);
+  const [isVisible, setIsVisible] = useState(true);
+  const [hide, setHide] = useState(false);
 
   const addIdToArrayOfObjects = (array) => {
 		return array.map(element => ({
@@ -24,7 +26,7 @@ function App() {
 
       axios
 
-        .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=1d94b5d4f7d448edad529369faf06ed0&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=6&limitLicense=true", {
+        .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=37cd85a2df4c426685057ae2162f7e75&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=6&limitLicense=true", {
           cancelToken: source.token
         })
 
@@ -47,29 +49,46 @@ function App() {
 
   }, [])
 
+  const clickHandler = (event) => {
+    setIsVisible(!isVisible);
+}
+
             
    /* Using Routes and the Switch to create a Single Page Application (SPA) navigation structure to render specific components */
       return (
 
         <div className="App">
           <header><img src="https://i.ibb.co/hFhc0y0/WCS-Project-2.png" alt="" className="logo" /></header>
-          <SearchInput recipeData={recipeData} />
+          <SearchInput 
+              recipeData={recipeData} 
+              isSearchValue={isSearchValue} 
+              setIsSearchValue={setIsSearchValue} 
+              setHide={setHide} 
+              hide={hide}/>
+          
 
           <div className="content">
 
 
              <Switch>
 
-              <Route  exact path="/"></Route>
+              <Route exact path="/"></Route>
               
-              <Route path="/Recipes"> <Recipes recipeData={recipeData} /> </Route>
+              <Route path="/Recipes">{isSearchValue && <Recipes 
+                      recipeData={recipeData} 
+                      clickHandler={clickHandler} 
+                      isVisible={isVisible} 
+                      setIsVisible={setIsVisible}
+                      setHide={setHide} 
+                      hide={hide}/>}
+                </Route>
               
               <Route path="/Favorites"> <Favorites /> </Route>
             
             </Switch>
 
           </div >
-            <NavFooter />
+            <NavFooter clickHandler={clickHandler} isVisible={isVisible} setIsVisible={setIsVisible}/>
           </div >
 
   );

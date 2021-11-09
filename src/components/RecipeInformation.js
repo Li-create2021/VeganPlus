@@ -1,7 +1,7 @@
 import "./RecipeInformationStyle.css";
 
 function RecipeInformation({ recipe }) {
-    const ingredient = recipe.nutrition.ingredients;
+    const ingredient = recipe.extendedIngredients;
 
     return (
         <div className="Recipe-information">
@@ -20,10 +20,21 @@ function RecipeInformation({ recipe }) {
                 <h2>Insgredients:</h2>
                 {ingredient.map((items, index) => {
                     return <li key={`${index}147`}>
-                                {items.amount} 
-                                {items.unit} 
-                                {items.name}
+                                {`${items.amount} 
+                                ${items.unit} 
+                                ${items.name}`}
                             </li>
+                })}
+            </section>
+
+           <section className="ingredient-img">
+                {recipe.missedIngredients.map((item, index) => {
+                    return (
+                        <section key={index}>
+                            <img src={`${item.image}`} alt={item.extendedName} />
+                            <p>{item.name}</p>
+                        </section>
+                    )
                 })}
             </section>
 

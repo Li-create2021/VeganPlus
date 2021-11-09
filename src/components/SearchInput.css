@@ -57,6 +57,16 @@
     }
 }
 
+/*       Style for Reipe component         */
 
+.recipe-info-component {
+    margin-top: -150px;
+    min-width: 100vw; 
+    width: auto;
+    min-height: 100vh;
+    height: auto;
+    background-color: white;
+    color: black;
+}
 
 
