@@ -1,7 +1,9 @@
 import "./SearchInput.css"
-import React, { useState} from 'react';
+import React, { useState } from 'react';
 import RecipeList from './RecipeList';
 import FilterData from './FilterData';
+import Form from './atoms/Form';
+import Button from './atoms/Button';
 
 function SearchInput(props) {
     const { recipeData } = props;
@@ -23,11 +25,12 @@ function SearchInput(props) {
         setCheckbox(newCheckbox);
     }
 
+    console.log(props.pathname === "/");
 
     /*Search input form*/
     return (
         <>
-            <form className="recipe-search">
+            <Form pathname={props.pathname}>
                 <input
                     className="recipe-input"
                     type="text"
@@ -38,13 +41,13 @@ function SearchInput(props) {
                         setSearchValue(e.target.value)
                     }} />
 
-                <button
+                <Button
                     className="search-button"
                     type="button"
                     onClick={clickHandler}
-                >                        
-                        Search
-                </button>
+                >
+                    Search
+                </Button>
 
                 {isVisible &&
                     <div className="recipe-filter">
@@ -54,23 +57,17 @@ function SearchInput(props) {
                                 < li key={index} style={{ listStyleType: "none", color: "white" }}>
 
                                     <input type="checkbox" onChange={() => checkboxHandler(index)} checked={dish.isSelected} /> {dish.dishType}
-                                
+
                                 </li>
                             )}
 
                         </ol>
                     </div>}
-            </form>
+            </Form>
 
             <div className="recipes">
-            {recipeData && recipeData.filter(item => {
-                    // what are your conditions?
-                    // if input field is empty and no checkboxes are checked  then return true
-                    
-                    
-                return searchValue ? item.title.includes({searchValue}) : (!searchValue ? true : null)
-                        
-                    
+                {recipeData && recipeData.filter(item => {
+                    return searchValue ? item.title.includes({ searchValue }) : (!searchValue ? true : null)
                 }).map(recipe => (
                     <section key={recipe.id}>
                         <RecipeList title={title} setTitle={setTitle} recipe={recipe} />

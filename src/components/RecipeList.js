@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import RecipeInformation from "./RecipeInformation";
 import "./RecipeListStyle.css";
+import Section from './atoms/Section';
 
 function RecipeList({ recipe }) {
     const [isVisible, setIsVisible] = useState(false);
@@ -10,28 +11,27 @@ function RecipeList({ recipe }) {
         setIsVisible(!isVisible);
     }
 
-
     return (
         <section
-            
-            className="recipe-card" 
-            style={{backgroundSize: 'cover', backgroundImage: `url(${recipe.image})`}}
-            onClick={clickHandler} 
+
+            className="recipe-card"
+            style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})` }}
+            onClick={clickHandler}
         >
 
             <section className="recipe-body-section">
-                <section className="recipe-short-info">
+                <Section RecipeCardInfo>
                     <h3 className="recipe-header">{recipe.title}</h3>
                     <p className="recipe-total-time">{recipe.readyInMinutes}min</p>
-                </section>
+                </Section>
             </section>
 
-            {isVisible && 
+            {isVisible &&
                 <section >
-                    <RecipeInformation recipe={recipe}/> 
+                    <RecipeInformation recipe={recipe} />
                 </section>
             }
-        
+
         </section>
     )
 
