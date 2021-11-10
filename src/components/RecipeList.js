@@ -9,7 +9,8 @@ function RecipeList({ recipe, setHide, hide }) {
     return (
         <Router>
 
-           {hide === false && <Link to={`/Recipes/${recipe.id}`} >
+           {hide === false && 
+           <Link to={`/Recipes/${recipe.id}`} >
                 <section
                     onClick={() => setHide(true)}
                     className="recipe-card" 

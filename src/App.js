@@ -4,13 +4,13 @@ import SearchInput from './components/SearchInput';
 import Recipes from './components/Recipes';
 import Favorites from './components/Favorites';
 import NavFooter from './components/NavFooter';
+import Home from './components/Home'
 import axios from 'axios';
 import {nanoid} from 'nanoid';
 
 function App() {
   const [recipeData, setRecipesData] = useState(null);
   const [isSearchValue, setIsSearchValue] = useState(true);
-  const [isVisible, setIsVisible] = useState(true);
   const [hide, setHide] = useState(false);
 
   const addIdToArrayOfObjects = (array) => {
@@ -49,9 +49,6 @@ function App() {
 
   }, [])
 
-  const clickHandler = (event) => {
-    setIsVisible(!isVisible);
-}
 
             
    /* Using Routes and the Switch to create a Single Page Application (SPA) navigation structure to render specific components */
@@ -72,23 +69,28 @@ function App() {
 
              <Switch>
 
-              <Route exact path="/"></Route>
+              <Route exact path="/">
+                    <Home 
+                          recipeData={recipeData} 
+                          setHide={setHide} 
+                          hide={hide}/>
+              </Route>
               
-              <Route path="/Recipes">{isSearchValue && <Recipes 
-                      recipeData={recipeData} 
-                      clickHandler={clickHandler} 
-                      isVisible={isVisible} 
-                      setIsVisible={setIsVisible}
-                      setHide={setHide} 
-                      hide={hide}/>}
-                </Route>
+              <Route path="/Recipes">
+                {isSearchValue && 
+                  <Recipes 
+                        recipeData={recipeData} 
+                        setHide={setHide} 
+                        hide={hide}/>
+                }
+              </Route>
               
               <Route path="/Favorites"> <Favorites /> </Route>
             
             </Switch>
 
           </div >
-            <NavFooter clickHandler={clickHandler} isVisible={isVisible} setIsVisible={setIsVisible}/>
+            <NavFooter setHide={setHide} />
           </div >
 
   );

@@ -1,10 +1,11 @@
 import RecipeList from "./RecipeList";
 import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-function Recipes({ recipeData, hide, setHide }) {
+function Home({ recipeData, hide, setHide }) {
    
     return (
-      <section className="Recipes">
+      <section className="Home">
+          <h1>A little inspiration?</h1>
         {recipeData &&
           recipeData.map((recipe, index) => {
             return (
@@ -22,7 +23,7 @@ function Recipes({ recipeData, hide, setHide }) {
     );
   }
   
-  export default Recipes;
+  export default Home;
 
 
   

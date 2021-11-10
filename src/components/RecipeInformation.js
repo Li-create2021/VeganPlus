@@ -20,8 +20,8 @@ function RecipeInformation({ recipe }) {
                 <h2>Insgredients:</h2>
                 {ingredient.map((items, index) => {
                     return <li key={`${index}147`}>
-                                {`${items.amount} 
-                                ${items.unit} 
+                                {`${items.measures.metric.amount} 
+                                ${items.measures.metric.unitShort} 
                                 ${items.name}`}
                             </li>
                 })}
@@ -40,14 +40,30 @@ function RecipeInformation({ recipe }) {
 
             <section className="instructions">
                 {recipe.analyzedInstructions[0].steps.map((item, index) => {
+                    
                     return (
-                        <div key={`${index}741`}>
+                        <section key={`${index}741`}>
                             <h3>Step {item.number}</h3>
                             <p>{item.step}</p>
-                        </div>
+                        </section>
                     )
                 })}
             </section>
+
+       { /*   <section className="equipment">
+                {
+                    recipe.analyzedInstructions[0].steps.map((item, index) => {
+                        if (item.equipment[0]) {
+                            return (
+                                <section key={`${index}741`}>
+                                    <p>{item.equipment[0].name}</p>
+                                </section>
+                            )
+                        } 
+                    })
+                })
+                
+            </section> */}
 
         </div>
     )

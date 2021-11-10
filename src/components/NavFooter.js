@@ -7,14 +7,17 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { nanoid } from 'nanoid';
 
 
-const NavFooter = ({clickHandler}) => {
+const NavFooter = ({ setHide }) => {
 	    
     return (
 		
         <>
             <ul className="footer">             
 
-                        <li key={nanoid()} className="nav-links">
+                        <li key={nanoid()} className="nav-links" onClick={() => {
+                            window.location.reload();
+                            setHide(false);
+                            }}>
                             <Link to="/">  <FaHome size={25} color={"#009999"}/></Link>
                         </li>
                         
