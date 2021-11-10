@@ -1,38 +1,34 @@
-import { useState } from 'react';
+import { Route, BrowserRouter as Router, Link } from 'react-router-dom';
 import RecipeInformation from "./RecipeInformation";
 import "./RecipeListStyle.css";
 import Section from './atoms/Section';
 
-function RecipeList({ recipe }) {
-    const [isVisible, setIsVisible] = useState(false);
+function RecipeList({ recipe, setHide, hide }) {
 
-    const clickHandler = (event) => {
-        event.preventDefault();
-        setIsVisible(!isVisible);
-    }
 
     return (
-        <section
+        <Router>
 
-            className="recipe-card"
-            style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})` }}
-            onClick={clickHandler}
-        >
+            {hide === false &&
+                <Link to={`/Recipes/${recipe.id}`} >
+                    <section
+                        onClick={() => setHide(true)}
+                        className="recipe-card"
+                        style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})` }}
+                    >
+                        <Section RecipeCardInfo>
+                            <h3 className="recipe-header">{recipe.title}</h3>
+                            <p className="recipe-total-time">{recipe.readyInMinutes}min</p>
+                        </Section>
 
-            <section className="recipe-body-section">
-                <Section RecipeCardInfo>
-                    <h3 className="recipe-header">{recipe.title}</h3>
-                    <p className="recipe-total-time">{recipe.readyInMinutes}min</p>
-                </Section>
-            </section>
+                    </section>
+                </Link>}
 
-            {isVisible &&
-                <section >
-                    <RecipeInformation recipe={recipe} />
-                </section>
-            }
+            <Route path={`/Recipes/${recipe.id}`} >
+                <RecipeInformation recipe={recipe} />
+            </Route>
 
-        </section>
+        </Router>
     )
 
 }

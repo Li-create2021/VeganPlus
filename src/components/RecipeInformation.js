@@ -1,7 +1,7 @@
 import "./RecipeInformationStyle.css";
 
 function RecipeInformation({ recipe }) {
-    const ingredient = recipe.nutrition.ingredients;
+    const ingredient = recipe.extendedIngredients;
 
     return (
         <div className="Recipe-information">
@@ -20,23 +20,50 @@ function RecipeInformation({ recipe }) {
                 <h2>Insgredients:</h2>
                 {ingredient.map((items, index) => {
                     return <li key={`${index}147`}>
-                                {items.amount} 
-                                {items.unit} 
-                                {items.name}
+                                {`${items.measures.metric.amount} 
+                                ${items.measures.metric.unitShort} 
+                                ${items.name}`}
                             </li>
+                })}
+            </section>
+
+           <section className="ingredient-img">
+                {recipe.missedIngredients.map((item, index) => {
+                    return (
+                        <section key={index}>
+                            <img src={`${item.image}`} alt={item.extendedName} />
+                            <p>{item.name}</p>
+                        </section>
+                    )
                 })}
             </section>
 
             <section className="instructions">
                 {recipe.analyzedInstructions[0].steps.map((item, index) => {
+                    
                     return (
-                        <div key={`${index}741`}>
+                        <section key={`${index}741`}>
                             <h3>Step {item.number}</h3>
                             <p>{item.step}</p>
-                        </div>
+                        </section>
                     )
                 })}
             </section>
+
+       { /*   <section className="equipment">
+                {
+                    recipe.analyzedInstructions[0].steps.map((item, index) => {
+                        if (item.equipment[0]) {
+                            return (
+                                <section key={`${index}741`}>
+                                    <p>{item.equipment[0].name}</p>
+                                </section>
+                            )
+                        } 
+                    })
+                })
+                
+            </section> */}
 
         </div>
     )
