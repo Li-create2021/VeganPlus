@@ -6,8 +6,9 @@ We have 3 members in our team: Francis Tatepo, Joshua Meyers and Liana van Zyl w
 
 The main features are:
 
-✅ Home page: With a search bar to search recipes and filter your preferences from here
-✅ Recipe page: Where you can scroll though more vegan recipes
-✅ Favorite page: Where you can ultimately save your favorite recipes
+✅ Home page: With a search bar to search recipes and filter your preferences from here  
+✅ Recipe page: Where you can scroll though more vegan recipes     
+✅ Favorite page: Where you can ultimately save your favorite recipes    
 
-To build our application we made use of Javascript, CSS, Styled-components and React. We are building a SPA with the use of React Route to navigate through the application pages. 
+To build our application we made use of Javascript, CSS, Styled-components and React.   
+We are building a SPA with the use of React Route to navigate through the application pages. 
