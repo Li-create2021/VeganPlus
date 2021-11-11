@@ -10,7 +10,7 @@
     min-height: 180px;
     border-radius: 2.5px;
     color: white;
-    margin: 10px 0;
+    margin: 20px;
     text-align: center;
 }
 
@@ -35,10 +35,12 @@
     align-self: flex-end;
     margin: 5px;
     text-align: left;
+    
 }
 
 .recipe-header {
     margin: 2px;
+    text-decoration: none;
 }
 
 .recipe-total-time {

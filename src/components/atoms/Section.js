@@ -10,8 +10,7 @@ const Section = styled.section`
   align-items: center;
   justify-content: flex-end;
   align-content: center;
-  margin: 30px;
-}
+  margin: 20px;
 
 ${props => props.RecipeCardInfo && css`
 display: flex;
@@ -23,22 +22,20 @@ flex-direction: column;
 align-items: center;
 justify-content: flex-end;
 align-content: center;
-margin: 30px;
-}
-`}
 
+`}
 ${props => props.RecipeTile && css`
-display: flex;
-flex-wrap: wrap;
-width: 80%;
-margin-top: 5%;
-display: flex;
-flex-direction: column;
-align-items: center;
-justify-content: flex-end;
-align-content: center;
-margin: 30px;
-  }
+  display: flex;
+  flex-wrap: wrap;
+  width: 80%;
+  margin-top: 5%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-end;
+  align-content: center;
+  margin: 30px;
+  
   `}
 `;
 export default Section;
