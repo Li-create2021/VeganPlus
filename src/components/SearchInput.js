@@ -81,13 +81,12 @@ function SearchInput(props) {
 
                     return searchValue ? item.summary.includes(`${searchValue}`) : (!searchValue ? true : null)
 
-
                 }).map(recipe => {
                     console.log(recipe)
                     return (
                         <Router key={recipe.id}>
                             <Switch>
-                                <Route path={"/Recipes"}>
+                                <Route path={"/"}>
                                     <RecipeList setHide={setHide} hide={hide} recipe={recipe} isVisible={isVisible} />
                                 </Route>
                             </Switch>

@@ -17,23 +17,32 @@
 
 /*       To adjust cards inner layout        */
 
-.recipe-short-info {
+.recipe-section { 
     display: flex;
+    flex-flow: column wrap;
+    align-items: center;
+}
+
+.recipe-body-section {
+    height: 100%;
+    display: flex;
+    align-items: flex-start;
+    flex-direction: row-reverse;
     justify-content: space-between;
+}
+
+.recipe-short-info {
+    align-self: flex-end;
+    margin: 5px;
     text-align: left;
-    min-height: 180px;
 }
 
 .recipe-header {
-    display: flex;
-    padding: 5px;
-    align-items: flex-end;
+    margin: 2px;
 }
 
 .recipe-total-time {
-    margin: 0;
-    background-color: teal;
-    height: 25px;
+    margin: 2px;
 }
 
 

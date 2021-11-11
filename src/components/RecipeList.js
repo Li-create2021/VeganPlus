@@ -5,7 +5,6 @@ import Section from './atoms/Section';
 
 function RecipeList({ recipe, setHide, hide }) {
 
-
     return (
         <Router>
 
@@ -14,7 +13,8 @@ function RecipeList({ recipe, setHide, hide }) {
                     <section
                         onClick={() => setHide(true)}
                         className="recipe-card"
-                        style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})` }}
+                        style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})`, display: 'flex' }}
+
                     >
                         <Section RecipeCardInfo>
                             <h3 className="recipe-header">{recipe.title}</h3>
