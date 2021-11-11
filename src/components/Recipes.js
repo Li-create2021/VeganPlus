@@ -1,14 +1,11 @@
 import RecipeList from "./RecipeList";
-import { Switch, Route, useRouteMatch} from 'react-router-dom';
+import { Switch, Route} from 'react-router-dom';
 import RecipeInformation from "./RecipeInformation";
 
 function Recipes({ recipeData, hide, setHide }) {
-  let { path } = useRouteMatch();
-  console.log(path)
-
   return (
       <Switch>
-        <Route exact path={path}>
+        <Route exact path={"/Recipes"}>
           <section className="Recipes">
             {recipeData &&
             recipeData.map((recipe, index) => {
@@ -19,7 +16,7 @@ function Recipes({ recipeData, hide, setHide }) {
             }
           </section>
         </Route>
-        <Route exact path={`${path}/:id`}>
+        <Route exact path={"/Recipes/:id"}>
           <RecipeInformation recipeData={recipeData}/>
         </Route>
       </Switch>
@@ -27,6 +24,3 @@ function Recipes({ recipeData, hide, setHide }) {
 }
 
 export default Recipes;
-
-
-
