@@ -84,11 +84,7 @@ function App() {
               hide={hide} />
           </Route>
 
-          <Route exact path="/Recipes/:id">
-            <RecipeInformation recipeData={recipeData}/>
-          </Route>
-
-          <Route exact path="/Recipes">
+          <Route path="/Recipes">
             {isSearchValue &&
               <Recipes
                 recipeData={recipeData}
