@@ -1,17 +1,23 @@
-import { Route, BrowserRouter as Router, Link } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 import RecipeInformation from "./RecipeInformation";
 import "./RecipeListStyle.css";
 import Section from './atoms/Section';
 
 function RecipeList({ recipe, setHide, hide }) {
+    let history = useHistory();
+
+    function clickHandler() {
+        setHide(true);
+        history.push(`/Recipes/${recipe.id}`)
+    }
 
     return (
-        <Router>
+        <>
 
             {hide === false &&
-                <Link to={`/Recipes/${recipe.id}`} >
-                    <section
-                        onClick={() => setHide(true)}
+                
+                    <Section
+                        onClick={clickHandler}
                         className="recipe-card"
                         style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})`, display: 'flex' }}
 
@@ -21,14 +27,9 @@ function RecipeList({ recipe, setHide, hide }) {
                             <p className="recipe-total-time">{recipe.readyInMinutes}min</p>
                         </Section>
 
-                    </section>
-                </Link>}
-
-            <Route path={`/Recipes/${recipe.id}`} >
-                <RecipeInformation recipe={recipe} />
-            </Route>
-
-        </Router>
+                    </Section>
+            }
+        </>
     )
 
 }

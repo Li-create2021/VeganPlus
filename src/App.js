@@ -5,6 +5,7 @@ import Recipes from './components/Recipes';
 import Favorites from './components/Favorites';
 import NavFooter from './components/NavFooter';
 import Home from './components/Home'
+import RecipeInformation from './components/RecipeInformation';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
 
@@ -73,7 +74,7 @@ function App() {
 
       <div className="content">
 
-
+      
         <Switch>
 
           <Route exact path="/">
@@ -83,7 +84,11 @@ function App() {
               hide={hide} />
           </Route>
 
-          <Route path="/Recipes">
+          <Route exact path="/Recipes/:id">
+            <RecipeInformation recipeData={recipeData}/>
+          </Route>
+
+          <Route exact path="/Recipes">
             {isSearchValue &&
               <Recipes
                 recipeData={recipeData}

@@ -1,7 +1,11 @@
 import "./RecipeInformationStyle.css";
+import { useParams } from 'react-router-dom';
 
-function RecipeInformation({ recipe }) {
+function RecipeInformation({ recipeData }) {
+    console.log("recipe informartion was rendered")
     const ingredient = recipe.extendedIngredients;
+    let { id } = useParams();
+    const recipe = recipeData.find(recipe => recipe.id === id)
 
     return (
         <div className="Recipe-information">

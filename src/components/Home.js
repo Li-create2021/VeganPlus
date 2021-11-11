@@ -9,13 +9,7 @@ function Home({ recipeData, hide, setHide }) {
         {recipeData &&
           recipeData.map((recipe, index) => {
             return (
-              <Router key={recipe.id}>
-                  <Switch>
-                    <Route path={"/Recipes"}>
-                      <RecipeList setHide={setHide} hide={hide} recipe={recipe} />
-                    </Route>
-                  </Switch>
-              </Router>
+              <RecipeList setHide={setHide} hide={hide} recipe={recipe} key={recipe.id} />
             )
           })
         }

@@ -3,15 +3,18 @@
 /*          Recipe Card style  -- general   */
 
 .recipe-card {
-    width: 90%;
-    min-width: 320px;
+    min-width: 370px;
     max-width: 510px;
     height: auto;
     min-height: 180px;
     border-radius: 2.5px;
     color: white;
-    margin: 10px 0;
+    margin: 20px;
     text-align: center;
+}
+
+.links {
+    text-decoration: none;
 }
 
 
@@ -33,8 +36,8 @@
 
 .recipe-short-info {
     align-self: flex-end;
-    margin: 5px;
     text-align: left;
+    max-width: 200px;
 }
 
 .recipe-header {
