@@ -2,7 +2,6 @@
 
  /* CSS for the navbar displayed at the bottom of all the pages */
 .footer {
-
     margin:0;
     padding:0;
     display: flex;
@@ -10,7 +9,10 @@
     list-style: none;
     text-decoration: none;
     background-color: rgb(255, 255, 255);
-
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
   }
 
   .logo {

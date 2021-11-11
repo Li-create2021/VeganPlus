@@ -1,22 +1,28 @@
 import RecipeList from "./RecipeList";
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
 
-function Recipes({recipeData}) {
-   
-    return (
-      <section className="Recipes">
-        {recipeData && 
-          recipeData.map((recipe, index) => {
-            return (
+function Recipes({ recipeData, hide, setHide }) {
 
-              <section key={recipe.id}>
-                <RecipeList recipe={recipe} />
-              </section>
-              
-            )
-          })
-        }
-      </section>
-    );
-  }
-  
-  export default Recipes;
+  return (
+    <section className="Recipes">
+      {recipeData &&
+        recipeData.map((recipe, index) => {
+          return (
+            <Router key={recipe.id}>
+              <Switch>
+                <Route path={"/Recipes"}>
+                  <RecipeList setHide={setHide} hide={hide} recipe={recipe} />
+                </Route>
+              </Switch>
+            </Router>
+          )
+        })
+      }
+    </section>
+  );
+}
+
+export default Recipes;
+
+
+

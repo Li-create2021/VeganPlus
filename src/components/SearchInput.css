@@ -1,7 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 /*Recipe Search Input Styling*/
-.recipe-search {
+/*.recipeSearch {
     display: grid;
     place-items: center;
     background-image: url(https://i.ibb.co/6DjLHFh/anna-pelzer-IGf-IGP5-ONV0-unsplash.jpg);
@@ -14,7 +14,7 @@
     align-content: center;
     margin: 0px 20px 20px 20px;
     text-align: center;
-}
+}*/
 
 .recipes {
     display: flex;
@@ -26,9 +26,10 @@
 .filter-list {
     display: flex;
     list-style: none;
+    font-size: 12px;
+    flex-direction: row;
     flex-wrap: wrap;
-    justify-content: center;
-
+    align-items: baseline;
 }
 
 .recipe-input{
@@ -38,13 +39,13 @@
     font-size: 15px;
 }
 
-.search-button {
+/*.search-button {
     padding: 6px 16px;
     font-size: 15px;
     background-color: rgb(38, 170, 21);
     border-radius: 4px;
     color: white;
-}
+}*/
 
 /*        Desktop mode    media query       */
 @media screen and (min-width: 760px) {
@@ -57,6 +58,16 @@
     }
 }
 
+/*       Style for Reipe component         */
 
+.recipe-info-component {
+    margin-top: -150px;
+    min-width: 100vw; 
+    width: auto;
+    min-height: 100vh;
+    height: auto;
+    background-color: white;
+    color: black;
+}
 
 

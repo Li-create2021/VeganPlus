@@ -1,13 +1,16 @@
 import "./SearchInput.css"
-import React, { useState} from 'react';
+import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
+import React, { useState } from 'react';
 import RecipeList from './RecipeList';
 import FilterData from './FilterData';
+import Form from './atoms/Form';
+import Button from './atoms/Button';
 
 function SearchInput(props) {
-    const { recipeData } = props;
+
     const [searchValue, setSearchValue] = useState("");
+    const { recipeData, setIsSearchValue, hide, setHide } = props;
     const [isVisible, setIsVisible] = useState(false);
-    const [title, setTitle] = useState();
     const [checkbox, setCheckbox] = useState(FilterData);
 
     /*Event Handler for Filter List Display*/
@@ -23,59 +26,74 @@ function SearchInput(props) {
         setCheckbox(newCheckbox);
     }
 
+    console.log(props.pathname === "/");
 
     /*Search input form*/
     return (
         <>
-            <form className="recipe-search">
-                <input
-                    className="recipe-input"
-                    type="text"
-                    placeholder="Search ingredients"
-                    autoComplete="Off"
-                    value={searchValue}
-                    onChange={(e) => {
-                        setSearchValue(e.target.value)
-                    }} />
+            {hide === false &&
+                <Form pathname={props.pathname}
+                    onSubmit={(e) => {
+                        e.preventDefault();
+                    }}>
+                    <input
+                        className="recipe-input"
+                        type="text"
+                        placeholder="Search ingredients"
+                        autoComplete="Off"
+                        value={searchValue}
+                        onChange={(e) => {
+                            setSearchValue(e.target.value);
+                            e.target.value ? setIsSearchValue(false) : setIsSearchValue(true)
+                        }}
 
-                <button
-                    className="search-button"
-                    type="button"
-                    onClick={clickHandler}
-                >                        
+                    />
+
+                    <Button
+                        className="search-button"
+                        type="button"
+                        onClick={clickHandler}
+                    >
                         Search
-                </button>
+                    </Button>
 
-                {isVisible &&
-                    <div className="recipe-filter">
-                        <ol className="filter-list">
+                    {isVisible &&
+                        <div className="recipe-filter">
+                            <ol className="filter-list">
 
-                            {checkbox.map((dish, index) =>
-                                < li key={index} style={{ listStyleType: "none", color: "white" }}>
+                                {checkbox.map((dish, index) =>
+                                    < li key={index} style={{ listStyleType: "none", color: "white" }}>
 
-                                    <input type="checkbox" onChange={() => checkboxHandler(index)} checked={dish.isSelected} /> {dish.dishType}
-                                
-                                </li>
-                            )}
+                                        <input type="checkbox" onChange={() => checkboxHandler(index)} checked={dish.isSelected} /> {dish.dishType}
 
-                        </ol>
-                    </div>}
-            </form>
+                                    </li>
+                                )}
+
+                            </ol>
+                        </div>}
+                </Form>}
 
             <div className="recipes">
-            {recipeData && recipeData.filter(item => {
+                {searchValue && recipeData.filter(item => {
                     // what are your conditions?
                     // if input field is empty and no checkboxes are checked  then return true
-                    
-                    
-                return searchValue ? item.title.includes({searchValue}) : (!searchValue ? true : null)
-                        
-                    
-                }).map(recipe => (
-                    <section key={recipe.id}>
-                        <RecipeList title={title} setTitle={setTitle} recipe={recipe} />
-                    </section>
-                ))}
+                    console.log(typeof (item.title))
+
+                    return searchValue ? item.summary.includes(`${searchValue}`) : (!searchValue ? true : null)
+
+                }).map(recipe => {
+                    console.log(recipe)
+                    return (
+                        <Router key={recipe.id}>
+                            <Switch>
+                                <Route path={"/"}>
+                                    <RecipeList setHide={setHide} hide={hide} recipe={recipe} isVisible={isVisible} />
+                                </Route>
+                            </Switch>
+                        </Router>
+                    )
+                })
+                }
 
             </div>
 
