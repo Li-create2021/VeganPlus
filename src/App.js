@@ -32,7 +32,7 @@ function App() {
 
     axios
 
-      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=618396b0abe143398becafd2108f3164&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=2&limitLicense=true", {
+      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=1d94b5d4f7d448edad529369faf06ed0&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=2&limitLicense=true", {
         cancelToken: source.token
       })
 
@@ -61,7 +61,7 @@ function App() {
   return (
 
     <div className="App">
-      <header><img src="https://i.ibb.co/hFhc0y0/WCS-Project-2.png" alt="" className="logo" /></header>
+      <header><img src="https://i.ibb.co/RQqZ1d6/Screenshot-2021-11-11-at-23-11-32.png" alt="" className="logo" /></header>
       <SearchInput
         recipeData={recipeData}
         isSearchValue={isSearchValue}

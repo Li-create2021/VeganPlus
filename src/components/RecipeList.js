@@ -10,18 +10,22 @@ function RecipeList({ recipe, setHide, hide }) {
 
             {hide === false &&
                 <Link to={`/Recipes/${recipe.id}`} >
-                    <section
+                    <Section
                         onClick={() => setHide(true)}
                         className="recipe-card"
                         style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})`, display: 'flex' }}
 
                     >
-                        <Section RecipeCardInfo>
-                            <h3 className="recipe-header">{recipe.title}</h3>
-                            <p className="recipe-total-time">{recipe.readyInMinutes}min</p>
-                        </Section>
 
-                    </section>
+                        <h3 className="recipe-header">
+                            {recipe.title}
+                        </h3>
+                        <h3 className="recipe-total-time">
+                            {recipe.readyInMinutes}min
+                        </h3>
+
+
+                    </Section>
                 </Link>}
 
             <Route path={`/Recipes/${recipe.id}`} >

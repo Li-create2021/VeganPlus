@@ -16,18 +16,18 @@ function RecipeInformation({ recipe }) {
                 <li>Servings: {recipe.servings}</li>
             </ul>
 
-            <section className="ingedients">
-                <h2>Insgredients:</h2>
+            <section className="ingredients">
+                <h2>Ingredients:</h2>
                 {ingredient.map((items, index) => {
                     return <li key={`${index}147`}>
-                                {`${items.measures.metric.amount} 
+                        {`${items.measures.metric.amount} 
                                 ${items.measures.metric.unitShort} 
                                 ${items.name}`}
-                            </li>
+                    </li>
                 })}
             </section>
 
-           <section className="ingredient-img">
+            <section className="ingredient-img">
                 {recipe.missedIngredients.map((item, index) => {
                     return (
                         <section key={index}>
@@ -40,7 +40,7 @@ function RecipeInformation({ recipe }) {
 
             <section className="instructions">
                 {recipe.analyzedInstructions[0].steps.map((item, index) => {
-                    
+
                     return (
                         <section key={`${index}741`}>
                             <h3>Step {item.number}</h3>
@@ -50,7 +50,7 @@ function RecipeInformation({ recipe }) {
                 })}
             </section>
 
-       { /*   <section className="equipment">
+            { /*   <section className="equipment">
                 {
                     recipe.analyzedInstructions[0].steps.map((item, index) => {
                         if (item.equipment[0]) {
