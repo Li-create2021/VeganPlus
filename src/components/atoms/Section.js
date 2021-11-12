@@ -1,17 +1,14 @@
-import styled, { css } from 'styled-components';
+import styled from 'styled-components';
 
 const Section = styled.section`
   display: flex;
-  flex-wrap: wrap;
-  display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: flex-end;
-  align-content: center;
+  justify-content: space-between;
+  align-content: flex-start;
+  heigth: 100%;
+  width: 100%;
+  margin: 20px;
 
-  ${props => props.RecipeCardInfo && css`
-  max-width: 200px;
-  `}
-
-`;
+`
 export default Section;

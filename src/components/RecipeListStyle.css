@@ -4,7 +4,7 @@
 
 .recipe-card {
     min-width: 370px;
-    max-width: 510px;
+    max-width: 320px;
     height: auto;
     min-height: 180px;
     border-radius: 2.5px;
@@ -35,19 +35,35 @@
 }
 
 .recipe-short-info {
-    align-self: flex-end;
     text-align: left;
-    max-width: 200px;
+    margin: 5px;
 }
 
 .recipe-header {
     margin: 2px;
+    text-decoration: none;
+    text-shadow: 2px 2px 4px #000000;
+    margin-top: 75px;
+    max-width: 300px;
+    align-self: start;
 }
 
 .recipe-total-time {
     margin: 2px;
+    text-align: left;
+    text-shadow: 2px 2px 4px #000000;
+    align-self: start;
 }
 
+h3 {
+    font-size: 18px;
+    text-align: left;
+  }
+
+.Recipe-information {
+    margin: 20px;
+
+}
 
 /*           Favorite button                 */
 
@@ -56,16 +72,16 @@
     height: 40px;
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/3/35/Emoji_u2665.svg");
     background-size: 100%;
-    align-self: flex-start;
-}
-
-.notFavorite {
+    align-self: flex-end;
+  }
+  
+  .notFavorite {
     width: 40px;
     height: 40px;
     background-image: url("https://upload.wikimedia.org/wikipedia/commons/4/4f/Ei-heart.svg");
     background-size: 100%;
-    align-self: flex-start;
-}
+    align-self: flex-end;
+  }
 
 
 /*        Desktop mode    media query       */

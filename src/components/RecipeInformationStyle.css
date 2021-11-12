@@ -1,12 +1,12 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
 .recipe-info-component {
-    min-width: 100vw; 
     width: auto;
-    min-height: 100vh;
     height: auto;
     background-color: white;
     color: black;
+    padding: 5px;
+    background-color: rgb(38, 170, 21);
 }
 
 
