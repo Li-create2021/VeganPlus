@@ -1,10 +1,11 @@
 import "./SearchInput.css"
-import { Switch, Route, BrowserRouter as Router } from 'react-router-dom';
-import React, { useState } from 'react';
+import { Switch, Route } from 'react-router-dom'; // leave for now pls
+import React, { useState } from 'react'; //O
 import RecipeList from './RecipeList';
 import FilterData from './FilterData';
 import Form from './atoms/Form';
 import Button from './atoms/Button';
+import RecipeInformation from "./RecipeInformation";
 
 function SearchInput(props) {
 
@@ -31,7 +32,7 @@ function SearchInput(props) {
     /*Search input form*/
     return (
         <>
-            {hide === false &&
+            
                 <Form pathname={props.pathname}
                     onSubmit={(e) => {
                         e.preventDefault();
@@ -71,31 +72,33 @@ function SearchInput(props) {
 
                             </ol>
                         </div>}
-                </Form>}
+                </Form>
 
-            <div className="recipes">
-                {searchValue && recipeData.filter(item => {
-                    // what are your conditions?
-                    // if input field is empty and no checkboxes are checked  then return true
-                    console.log(typeof (item.title))
+                <Switch>
+                    <Route path={"/"}>
+                        <div className="recipes" >
+                            {searchValue && recipeData.filter(item => {
+                                // what are your conditions?
+                                // if input field is empty and no checkboxes are checked  then return true
+                                console.log(typeof (item.title))
 
-                    return searchValue ? item.summary.includes(`${searchValue}`) : (!searchValue ? true : null)
+                                return searchValue ? item.summary.includes(`${searchValue}`) : (!searchValue ? true : null)
 
-                }).map(recipe => {
-                    console.log(recipe)
-                    return (
-                        <Router key={recipe.id}>
-                            <Switch>
-                                <Route path={"/"}>
-                                    <RecipeList setHide={setHide} hide={hide} recipe={recipe} isVisible={isVisible} />
-                                </Route>
-                            </Switch>
-                        </Router>
-                    )
-                })
-                }
+                            }).map(recipe => {
+                                console.log(recipe)
+                                return (
+                                    <RecipeList  setHide={setHide} hide={hide} recipe={recipe} key={recipe.id} />
+                                )
+                            })
+                            }
 
-            </div>
+                        </div>
+                    </Route >
+
+                    <Route exact path={"/Recipes/:id"}>
+                        <RecipeInformation recipeData={recipeData}/>
+                    </Route>
+              </Switch>
 
         </>
     );

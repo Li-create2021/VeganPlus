@@ -7,7 +7,7 @@ ${props => props.pathname === "/" && css`
     height: 150px;
 
 `}
-    width: 80%;
+    width: 90%;
     min-width: 320px;
     max-width: 510px;
     border-radius: 2px;

@@ -2,26 +2,9 @@ import { createGlobalStyle } from 'styled-components';
 
 const GlobalStyle = createGlobalStyle`
   body {
-    margin: -16px;
-    padding: 30px 10px 10px 10px;
     background: white;
     font-family: Roboto, Helvetica, Sans-Serif;
-  }
-
-  h1 {
-    font-size: 20px;
-    text-align: center;
-  }
-
-  h3 {
-    font-size: 18px;
-    text-align: left;
-    text-shadow: 5px 2px 4px #000000;
-  }
-
-  h3 .recipe-total-time {
-    text-align: left;
-
+    margin-bottom: 80px;
   }
 
   a {
@@ -42,16 +25,6 @@ const GlobalStyle = createGlobalStyle`
     text-align: center;
   }
 
-  h3 {
-    font-size: 18px;
-    text-align: left;
-    text-shadow: 5px 2px 4px #000000;
-  }
-
-  h3 .recipe-total-time {
-    text-align: left;
-
-  }
 
   a {
     text-decoration: none;
@@ -86,15 +59,6 @@ const GlobalStyle = createGlobalStyle`
     margin: 0;
     position: left;
     line-height:none;
-    }
-
-    header {
-      display: flex;
-      margin: 13px;
-      align-contents: stretch;
-      flex-direction: row;
-      justify-content: space-around;
-
     }
 `;
 
