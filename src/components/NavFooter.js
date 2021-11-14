@@ -14,11 +14,11 @@ const NavFooter = ({ setHide }) => {
             <ul className="footer">
 
                 <li className="nav-links">
-                    <FaHome size={25} color={"rgb(38, 170, 21)"} onClick={() => {history.push('/')}} />
+                    <FaHome size={25} color={"rgb(38, 170, 21)"} onClick={() => {history.push('/'); setHide(false)}} />
                 </li>
 
                 <li className="nav-links">
-                    <BiFoodMenu size={25} color={"rgb(38, 170, 21)"} onClick={() => history.push('/Recipes')} />
+                    <BiFoodMenu size={25} color={"rgb(38, 170, 21)"} onClick={() => {history.push('/Recipes'); setHide(false)}} />
                 </li>
 
                 <li className="nav-links">

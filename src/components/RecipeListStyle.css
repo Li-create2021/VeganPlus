@@ -1,50 +1,34 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
-/*          Recipe Card style  -- general   */
+/* Adjustments to ALIGN ALL CARDS in list */
 
-.recipe-card {
-    min-width: 370px;
-    max-width: 320px;
-    height: auto;
-    min-height: 180px;
-    border-radius: 2.5px;
-    color: white;
-    margin: 20px;
-    text-align: center;
-}
-
-.links {
-    text-decoration: none;
-}
-
-
-/*       To adjust cards inner layout        */
-
-.recipe-section { 
+.recipes {
     display: flex;
-    flex-flow: column wrap;
     align-items: center;
+    margin-bottom: 30px;
 }
 
-.recipe-body-section {
-    height: 100%;
-    display: flex;
-    align-items: flex-start;
-    flex-direction: row-reverse;
-    justify-content: space-between;
-}
+/* All cards in DESKTOP MODE */
 
-.recipe-short-info {
-    text-align: left;
-    margin: 5px;
-}
+@media screen and (min-width: 860px) {
+    .recipes {
+        flex-flow: row wrap;
+        justify-content: center;
+        width: 80vw;
+        
+    }
+  }
+
+
+/*       To adjust CARDS INNER LAYOUT        */
 
 .recipe-header {
     margin: 2px;
     text-decoration: none;
     text-shadow: 2px 2px 4px #000000;
-    margin-top: 75px;
-    max-width: 300px;
+    margin-top: 36px;
+    overflow: hidden;
+    max-width: 310px;
     align-self: start;
 }
 
@@ -55,17 +39,15 @@
     align-self: start;
 }
 
-h3 {
-    font-size: 18px;
-    text-align: left;
-  }
-
-.Recipe-information {
-    margin: 20px;
-
+.gluten-free-icon {
+    width: 30px;
+    height: 30px;
+    align-self: end;
+    margin-top: -25px;
 }
 
-/*           Favorite button                 */
+
+/*           FAVORITE button                 */
 
 .isFavorite {
     width: 40px;
@@ -82,13 +64,3 @@ h3 {
     background-size: 100%;
     align-self: flex-end;
   }
-
-
-/*        Desktop mode    media query       */
-
-@media screen and (min-width: 860px) {
-    .recipe-section {
-        display: flex;
-        
-    }
-}
