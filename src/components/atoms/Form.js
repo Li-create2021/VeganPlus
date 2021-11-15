@@ -14,6 +14,7 @@ ${props => props.pathname === "/" && css`
     align-content: center;
     margin: 0px 20px 20px 20px;
     text-align: center;
+    justify-content: center;
 
 `;
 

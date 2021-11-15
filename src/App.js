@@ -1,8 +1,10 @@
+import './index.css';
 import { useState, useEffect } from 'react';
 import { Switch, Route, useLocation } from 'react-router-dom';
 import SearchInput from './components/SearchInput';
 import Recipes from './components/Recipes';
 import Favorites from './components/Favorites';
+import RecipeInformation from './components/RecipeInformation';
 import NavFooter from './components/NavFooter';
 import Home from './components/Home';
 import Header from './components/atoms/Header';
@@ -56,6 +58,7 @@ function App() {
 
   }, [])
 
+  
 
 
   /* Using Routes and the Switch to create a Single Page Application (SPA) navigation structure to render specific components */
@@ -95,7 +98,10 @@ function App() {
           </Route>
 
           <Route path="/Favorites"> <Favorites /> </Route>
-
+          
+          <Route exact path={"/Recipes/:id"}>
+            <RecipeInformation recipeData={recipeData}/>
+          </Route>
 
         </Switch>
 

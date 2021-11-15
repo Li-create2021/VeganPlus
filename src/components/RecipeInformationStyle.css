@@ -1,12 +1,151 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap');
 
-.recipe-info-component {
-    width: auto;
+/* General settings */
+.recipe-information {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-flow: column nowrap;
     height: auto;
+    width: 100vw;
     background-color: white;
     color: black;
-    padding: 5px;
-    background-color: rgb(38, 170, 21);
+    list-style: none;
+    overflow: hidden;
+    margin-bottom: 50px;
+}
+
+/* Title, dish type and dish-image */
+.info-header {
+    padding: 20px;
+    display: flex;
+    flex-flow: column wrap;
+}
+
+.dish-types-and-allergies {
+    display: flex;
+    justify-content: space-between;
+    align-self: center;
+    width: 90vw;
+    max-width: 450px;
+}
+
+.gluten-free-icon {
+    margin-bottom: 5px;
+}
+
+.dish-types {
+    display: flex;
+}
+
+.breakfast {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(57, 160, 57);
+    border-radius: 10px;
+}
+
+.lunch {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(204, 152, 56);
+    border-radius: 10px;
+}
+
+.dinner {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(81, 81, 216);
+    border-radius: 10px;
+}
+
+.side-dish {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(192, 82, 82);
+    border-radius: 10px;
+}
+
+/* MAIN IMAGE */
+.main-image {
+    align-self: center;
+    width: 90vw;
+    max-width: 450px;
 }
 
 
+/* Time, score and servings */
+.info-overview {
+    display: flex;
+    justify-content: space-around;
+    align-self: center;
+    list-style: none;
+    margin-left: -35px;
+    width: 90vw;
+    max-width: 450px;
+}
+
+.overview-list {
+    display: flex;
+    flex-flow: column nowrap;
+    margin: 0 20px 0 5px;
+}
+
+/* Ingredient information and image */
+.ingredients {
+    margin-bottom: 20px;
+    width: 90vw;
+    max-width: 450px;
+}
+
+.view-image {
+    width: 30%;
+    padding: 0.5em;
+    margin-bottom: 10px;
+    color: white;
+    background-color: rgb(38, 170, 21);
+    cursor: pointer;
+    border-radius: 5px;
+    font-size: 16px;
+}
+
+.ingredient-img-section {
+    display: flex;
+    justify-self: center;
+    align-items: flex-end;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: flex-end;
+    padding-top: 30px;
+    width: 100%;
+    overflow: auto;
+}
+
+.ingredient-image-frame {
+    margin: 5px;
+}
+
+
+
+
+/* Properties to adjust all steps*/
+.instructions {
+    align-self: center;
+    margin-bottom: 45px;
+    width: 90vw;
+    max-width: 450px;
+}
+
+/* Adjustments for info-icon on bottom of page */
+.info-icon {
+    height: 36px;
+    width: 36px;
+}

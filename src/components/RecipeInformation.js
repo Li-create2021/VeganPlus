@@ -1,27 +1,89 @@
 import "./RecipeInformationStyle.css";
 import { useParams } from 'react-router-dom';
+import { useState } from "react";
 
 function RecipeInformation({ recipeData }) {
-    console.log("recipe informartion was rendered")
+
     let { id } = useParams();
     const recipe = recipeData.find(recipe => recipe.id === id)
     const ingredient = recipe.extendedIngredients;
+    const [ showImages, setShowImages] = useState(false);
+    const [ showInformation, setShowInformation ] = useState(false);
+
+    const getInfo = (e) => {
+        setShowInformation(!showInformation)
+    }
+
+    /* IMAGES and RE-Sizing */
+
+    const viewImages = (e) => {
+        e.preventDefault();
+        setShowImages(!showImages);
+    }
+
+    const imgSize = (e) => {
+        if (e.target.style.transform === "scale(1.5)") {
+            return (
+            e.target.style.transform = "scale(1)",
+            e.target.style.transition = "transform 0.25s ease")
+        }
+        else {
+            return (
+            e.target.style.transform = "scale(1.5)",
+            e.target.style.transition = "transform 0.25s ease" )
+        }
+    }
 
     return (
-        <div className="Recipe-information">
-            <header>
+
+        <div className="recipe-information">
+            <header className="info-header">
                 <h1>{recipe.title}</h1>
-                <img src={recipe.image} alt={recipe.title} />
+
+{/***** Filter for breakfast, lunch & dinner *****/}
+
+            <section className="dish-types-and-allergies">
+                { /* Gluten free icon */
+                    recipe.glutenFree ? <img className="gluten-free-icon" src="https://cdn-icons-png.flaticon.com/512/1410/1410591.png" alt="gluten free"/> : null
+                }
+
+                <section className="dish-types">
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("breakfast"))
+                        .map((element, index) => <p key={index} className="breakfast">breakfast</p>)
+                    }
+                    
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("lunch"))
+                        .map((element, index) => <p key={index} className="lunch">lunch</p>)
+                    }
+                    
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("dinner"))
+                        .map((element, index) => <p key={index} className="dinner">dinner</p>)
+                    }
+
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("side dish"))
+                        .map((element, index) => <p key={index} className="side-dish">side dish</p>)
+                    }
+                </section>
+            </section>
+
+                <img className="main-image" src={recipe.image} alt={recipe.title} />
             </header>
 
+{/********     Displays cookingtime, servings and health score    ************/}
             <ul className="info-overview">
-                <li>Total time: {recipe.readyInMinutes}min</li>
-                <li>Health score: {recipe.healthScore}</li>
-                <li>Servings: {recipe.servings}</li>
+                <li className="overview-list">Total time: {recipe.readyInMinutes}min</li>
+                <li className="overview-list">Health score: {recipe.healthScore}</li>
+                <li className="overview-list">Servings: {recipe.servings}</li>
             </ul>
 
-            <section className="ingedients">
-                <h2>Insgredients:</h2>
+
+{/********     List of ingredients     ************/}
+            <section className="ingredients">
+                <h2>Ingredients:</h2>
                 {ingredient.map((items, index) => {
                     return <li key={`${index}147`}>
                                 {`${items.measures.metric.amount} 
@@ -31,17 +93,23 @@ function RecipeInformation({ recipeData }) {
                 })}
             </section>
 
-           <section className="ingredient-img">
-                {recipe.missedIngredients.map((item, index) => {
-                    return (
-                        <section key={index}>
-                            <img src={`${item.image}`} alt={item.extendedName} />
-                            <p>{item.name}</p>
-                        </section>
-                    )
-                })}
-            </section>
+{/********     Button to view images and image mapping     ************/}
+            <button className="view-image" onClick={(e) => viewImages(e)} >View picture</button>
+            
+            {showImages &&
+                <section className="ingredient-img-section">
+                    {recipe.missedIngredients.map((item, index) => {
+                        return (
+                            <section className="ingredient-image-frame" key={index}>
+                                <img onMouseDown={(e) => imgSize(e)} className="ingredient-image" src={`${item.image}`} alt={item.extendedName} />
+                                <p className="ingredient-image-name" >{item.name}</p>
+                            </section>
+                        )
+                    })}
+                </section>
+            }
 
+{/********     Maps out all steps     ************/}
             <section className="instructions">
                 {recipe.analyzedInstructions[0].steps.map((item, index) => {
                     
@@ -54,21 +122,21 @@ function RecipeInformation({ recipeData }) {
                 })}
             </section>
 
-       { /*   <section className="equipment">
-                {
-                    recipe.analyzedInstructions[0].steps.map((item, index) => {
-                        if (item.equipment[0]) {
-                            return (
-                                <section key={`${index}741`}>
-                                    <p>{item.equipment[0].name}</p>
-                                </section>
-                            )
-                        } 
-                    })
-                })
-                
-            </section> */}
+{/********     Information drop-down     ************/}
+            <img className="info-icon" src="https://cdn-icons.flaticon.com/png/512/3766/premium/3766220.png?token=exp=1636895696~hmac=4000b0c71628b5540fdf2bf1c34f6732" alt="information" onClick={(e) => getInfo(e)}/> 
+            {showInformation &&
+                <>
+                    <h2>Information</h2>
+                    <h3>Big thanks to {`${recipe.sourceName}`}</h3>
+                    <p>for beeing so kind to let us share their recipe.</p>
+                    <p>Original recipe: <a href={`${recipe.sourceUrl}`}>link</a></p>
 
+                    <h3>Also big thanks to <a href="https://spoonacular.com/">Spoonacular</a>!</h3>
+                    <p>Provider of the data. (The API)</p>
+                    <p>data source: </p>
+                    <a href={`${recipe.spoonacularSourceUrl}`}>{`${recipe.spoonacularSourceUrl}`}</a>
+                </>
+            }
         </div>
     )
 }

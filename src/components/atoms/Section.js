@@ -6,9 +6,14 @@ const Section = styled.section`
   align-items: center;
   justify-content: space-between;
   align-content: flex-start;
-  heigth: 100%;
-  width: 100%;
-  margin: 20px;
-
+  margin: 10px;
+  width: 80vw;
+  min-width: 320px;
+  max-width: 450px;
+  height: 200px;
+  border-radius: 2.5px;
+  color: white;
+  font-size: 18px;
+  text-align: left;
 `
 export default Section;
