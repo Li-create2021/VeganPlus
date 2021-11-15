@@ -14,6 +14,8 @@ function RecipeInformation({ recipeData }) {
         setShowInformation(!showInformation)
     }
 
+    /* IMAGES and RE-Sizing */
+
     const viewImages = (e) => {
         e.preventDefault();
         setShowImages(!showImages);
@@ -81,7 +83,7 @@ function RecipeInformation({ recipeData }) {
 
 {/********     List of ingredients     ************/}
             <section className="ingredients">
-                <h2>Insgredients:</h2>
+                <h2>Ingredients:</h2>
                 {ingredient.map((items, index) => {
                     return <li key={`${index}147`}>
                                 {`${items.measures.metric.amount} 
@@ -93,6 +95,7 @@ function RecipeInformation({ recipeData }) {
 
 {/********     Button to view images and image mapping     ************/}
             <button className="view-image" onClick={(e) => viewImages(e)} >View picture</button>
+            
             {showImages &&
                 <section className="ingredient-img-section">
                     {recipe.missedIngredients.map((item, index) => {
