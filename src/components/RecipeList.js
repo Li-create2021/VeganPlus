@@ -1,24 +1,19 @@
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
+import { useState } from 'react';
 import "./RecipeListStyle.css";
 import Section from './atoms/Section';
 
 
-function RecipeList({ recipe, setHide }) {
+function RecipeList({ recipe, setHide, addToFavHandler }) {
+    
+  const [showIsFavorite, setShowIsFavorite] = useState(false);
     let history = useHistory();
-    const [showIsFavorite, setShowIsFavorite] = useState(false);
-
-    function handleClickFavorite(event) {
-        event.stopPropagation();
-        event.preventDefault()
-    setShowIsFavorite(!showIsFavorite);
-    }
 
     function clickHandler() {
         setHide(true);
         history.push(`/Recipes/${recipe.id}`)
     }
-
+ 
     return (
         <Section
             onClick={clickHandler}
@@ -28,7 +23,7 @@ function RecipeList({ recipe, setHide }) {
         >
                 <button
                     id="favorite"
-                    onClick={(e) => handleClickFavorite(e)}
+                    onClick={() => `${addToFavHandler(recipe.id)}; ${setShowIsFavorite(!showIsFavorite)}; `}
                     className={showIsFavorite ? "isFavorite" : "notFavorite"}
                 />
 

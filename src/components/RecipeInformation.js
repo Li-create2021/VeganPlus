@@ -1,14 +1,17 @@
+
 import "./RecipeInformationStyle.css";
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
 
-function RecipeInformation({ recipeData }) {
+const RecipeInformation = ({ recipeData, addToFavHandler }) => {
 
     let { id } = useParams();
     const recipe = recipeData.find(recipe => recipe.id === id)
     const ingredient = recipe.extendedIngredients;
     const [ showImages, setShowImages] = useState(false);
     const [ showInformation, setShowInformation ] = useState(false);
+    const [showIsFavorite, setShowIsFavorite] = useState(false);
+
 
     const getInfo = (e) => {
         setShowInformation(!showInformation)
@@ -32,6 +35,7 @@ function RecipeInformation({ recipeData }) {
             e.target.style.transform = "scale(1.5)",
             e.target.style.transition = "transform 0.25s ease" )
         }
+
     }
 
     return (
@@ -69,8 +73,15 @@ function RecipeInformation({ recipeData }) {
                     }
                 </section>
             </section>
-
+{/**************  MAIN IMAGE on top of information  *********************/}      
+                
                 <img className="main-image" src={recipe.image} alt={recipe.title} />
+                
+                <button
+                    onClick={() => addToFavHandler(recipe.id)}
+                    className={showIsFavorite ? "isFavorite" : "notFavorite"}
+                />
+                    
             </header>
 
 {/********     Displays cookingtime, servings and health score    ************/}
@@ -137,6 +148,7 @@ function RecipeInformation({ recipeData }) {
                     <a href={`${recipe.spoonacularSourceUrl}`}>{`${recipe.spoonacularSourceUrl}`}</a>
                 </>
             }
+    
         </div>
     )
 }

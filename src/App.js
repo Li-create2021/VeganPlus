@@ -14,13 +14,16 @@ import { nanoid } from 'nanoid';
 
 //import styled from "styled-components";
 
-
 function App() {
+  // create the state for favorites // 
+  const [favRecipes, setFavRecipes] = useState([]);
+  const [showIsFavorite, setShowIsFavorite] = useState(false);
   const [recipeData, setRecipesData] = useState(null);
-  /* THIS NEEDS TO BE REVIEWED. IT'S BLOCKING THE DATA SOMEHOW*/
+  
   let location = useLocation();
   const [isSearchValue, setIsSearchValue] = useState(true);
   const [hide, setHide] = useState(false);
+  
 
   const addIdToArrayOfObjects = (array) => {
     return array.map(element => ({
@@ -35,7 +38,7 @@ function App() {
 
     axios
 
-      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=1d94b5d4f7d448edad529369faf06ed0&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=7&limitLicense=true", {
+      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=14a6c274a3c145b7a6b898948168891f&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=7&limitLicense=true", {
         cancelToken: source.token
       })
 
@@ -59,6 +62,14 @@ function App() {
   }, [])
 
   
+ //  this function will be added to an onClick // 
+  function addToFavHandler(id) {  
+    const  recipeToAdd = recipeData.find((element) => element.id === id);
+    const findDouble = favRecipes.find((itemDouble) => itemDouble.id === recipeToAdd.id);
+    return !findDouble ? setFavRecipes([...favRecipes, recipeToAdd]) : null;
+      } 
+
+  console.log(favRecipes);
 
 
   /* Using Routes and the Switch to create a Single Page Application (SPA) navigation structure to render specific components */
@@ -85,7 +96,10 @@ function App() {
             <Home
               recipeData={recipeData}
               setHide={setHide}
-              hide={hide} />
+              hide={hide} 
+              addToFavHandler={addToFavHandler}
+              showIsFavorite={showIsFavorite} />
+              
           </Route>
 
           <Route path="/Recipes">
@@ -93,20 +107,30 @@ function App() {
               <Recipes
                 recipeData={recipeData}
                 setHide={setHide}
-                hide={hide} />
+                hide={hide}
+                addToFavHandler={addToFavHandler}
+                showIsFavorite={showIsFavorite} />
             }
           </Route>
 
-          <Route path="/Favorites"> <Favorites /> </Route>
+          <Route path="/Favorites"> 
+          
+          <Favorites 
+            setHide={setHide} 
+            hide={hide}  
+            showIsFavorite={showIsFavorite} 
+            addToFavHandler={addToFavHandler}
+            favRecipes={favRecipes} />
+          </Route>
           
           <Route exact path={"/Recipes/:id"}>
-            <RecipeInformation recipeData={recipeData}/>
+            <RecipeInformation recipeData={recipeData} addToFavHandler={addToFavHandler} />
           </Route>
-
+ 
         </Switch>
 
       </div >
-      <NavFooter setHide={setHide} hide={hide}/>
+      <NavFooter setHide={setHide} hide={hide} />
     </div >
 
   );
