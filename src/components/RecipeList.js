@@ -4,14 +4,19 @@ import "./RecipeListStyle.css";
 import Section from './atoms/Section';
 
 
-function RecipeList({ recipe, setHide, addToFavHandler }) {
+function RecipeList({ recipe, setHide, addToFavHandler, favRecipe, setFavRecipe }) {
     
-  const [showIsFavorite, setShowIsFavorite] = useState(false);
+    const [showIsFavorite, setShowIsFavorite] = useState(false);
     let history = useHistory();
 
     function clickHandler() {
         setHide(true);
         history.push(`/Recipes/${recipe.id}`)
+    }
+
+    const favHandler = () => {
+        setShowIsFavorite(!showIsFavorite); 
+        addToFavHandler(recipe.id);
     }
  
     return (
@@ -22,8 +27,7 @@ function RecipeList({ recipe, setHide, addToFavHandler }) {
 
         >
                 <button
-                    id="favorite"
-                    onClick={() => `${addToFavHandler(recipe.id)}; ${setShowIsFavorite(!showIsFavorite)}; `}
+                    onClick={() => favHandler}
                     className={showIsFavorite ? "isFavorite" : "notFavorite"}
                 />
 

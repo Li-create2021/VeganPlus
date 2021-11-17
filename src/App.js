@@ -19,11 +19,11 @@ function App() {
   const [favRecipes, setFavRecipes] = useState([]);
   const [showIsFavorite, setShowIsFavorite] = useState(false);
   const [recipeData, setRecipesData] = useState(null);
-  
+
   let location = useLocation();
   const [isSearchValue, setIsSearchValue] = useState(true);
   const [hide, setHide] = useState(false);
-  
+
 
   const addIdToArrayOfObjects = (array) => {
     return array.map(element => ({
@@ -61,8 +61,8 @@ function App() {
 
   }, [])
 
-  
- //  this function will be added to an onClick // 
+
+  //  this function will be added to an onClick // 
   function addToFavHandler(id) {  
     const  recipeToAdd = recipeData.find((element) => element.id === id);
     const findDouble = favRecipes.find((itemDouble) => itemDouble.id === recipeToAdd.id);
@@ -97,9 +97,8 @@ function App() {
               recipeData={recipeData}
               setHide={setHide}
               hide={hide} 
-              addToFavHandler={addToFavHandler}
-              showIsFavorite={showIsFavorite} />
-              
+              addToFavHandler={addToFavHandler} />
+          
           </Route>
 
           <Route path="/Recipes">
@@ -107,26 +106,23 @@ function App() {
               <Recipes
                 recipeData={recipeData}
                 setHide={setHide}
-                hide={hide}
-                addToFavHandler={addToFavHandler}
-                showIsFavorite={showIsFavorite} />
+                hide={hide} 
+                addToFavHandler={addToFavHandler} 
+                favRecipes={favRecipes} 
+                setFavRecipes={setFavRecipes} />
             }
           </Route>
 
-          <Route path="/Favorites"> 
-          
+          <Route path="/Favorites">
+
           <Favorites 
             setHide={setHide} 
             hide={hide}  
             showIsFavorite={showIsFavorite} 
             addToFavHandler={addToFavHandler}
-            favRecipes={favRecipes} />
+            favRecipes={favRecipes} 
+            setFavRecipes={setFavRecipes} />
           </Route>
-          
-          <Route exact path={"/Recipes/:id"}>
-            <RecipeInformation recipeData={recipeData} addToFavHandler={addToFavHandler} />
-          </Route>
- 
         </Switch>
 
       </div >

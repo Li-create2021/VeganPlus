@@ -3,7 +3,7 @@ import "./RecipeInformationStyle.css";
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
 
-const RecipeInformation = ({ recipeData, addToFavHandler }) => {
+const RecipeInformation = ({ recipeData, favRecipes, addToFavHandler }) => {
 
     let { id } = useParams();
     const recipe = recipeData.find(recipe => recipe.id === id)
@@ -12,10 +12,26 @@ const RecipeInformation = ({ recipeData, addToFavHandler }) => {
     const [ showInformation, setShowInformation ] = useState(false);
     const [showIsFavorite, setShowIsFavorite] = useState(false);
 
-
-    const getInfo = (e) => {
+    const getInfo = () => {
         setShowInformation(!showInformation)
     }
+
+    /* Check if recipe is FAVORITE */
+    const checkFavs = () => {
+        if (favRecipes.filter(element => element.id === recipe.id)) {
+            setShowIsFavorite(true);
+            return true
+        }
+        else {
+            return false
+        }
+    };
+
+    const favHandler = () => {
+        setShowIsFavorite(!showIsFavorite); 
+        addToFavHandler(recipe.id);
+    }
+
 
     /* IMAGES and RE-Sizing */
 
@@ -78,8 +94,8 @@ const RecipeInformation = ({ recipeData, addToFavHandler }) => {
                 <img className="main-image" src={recipe.image} alt={recipe.title} />
                 
                 <button
-                    onClick={() => addToFavHandler(recipe.id)}
-                    className={showIsFavorite ? "isFavorite" : "notFavorite"}
+                    className={!checkFavs ? "isFavorite" : "notFavorite"}
+                    onClick={() => favHandler()}
                 />
                     
             </header>

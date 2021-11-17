@@ -1,7 +1,7 @@
 import { Route, Switch } from "react-router";
 import RecipeList from "./RecipeList";
 
-function Home({ recipeData, hide, setHide, addToFavHandler, showIsFavorite }) {
+function Home({ recipeData, hide, setHide, addToFavHandler }) {
    
     return (
       <Switch>
@@ -9,15 +9,14 @@ function Home({ recipeData, hide, setHide, addToFavHandler, showIsFavorite }) {
           <h1>A little inspiration?</h1>
         <section className="recipes">
           {recipeData &&
-            recipeData.slice(0, 2).map((recipe, index) => {
+            recipeData.slice(0, 3).map((recipe, index) => {
               return (
                 <RecipeList 
                   setHide={setHide} 
                   hide={hide} 
                   recipe={recipe} 
                   key={recipe.id} 
-                  addToFavHandler={addToFavHandler}
-                  showIsFavorite={showIsFavorite}/>
+                  addToFavHandler={addToFavHandler} />
               )
             })
           }
