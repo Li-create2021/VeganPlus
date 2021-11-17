@@ -1,6 +1,6 @@
 import './index.css';
 import { useState, useEffect } from 'react';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route, useLocation, Link } from 'react-router-dom';
 import SearchInput from './components/SearchInput';
 import Recipes from './components/Recipes';
 import Favorites from './components/Favorites';
@@ -10,10 +10,6 @@ import Home from './components/Home';
 import Header from './components/atoms/Header';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
-
-
-//import styled from "styled-components";
-
 
 function App() {
   const [recipeData, setRecipesData] = useState(null);
@@ -35,7 +31,7 @@ function App() {
 
     axios
 
-      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=1d94b5d4f7d448edad529369faf06ed0&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=7&limitLicense=true", {
+      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=14a6c274a3c145b7a6b898948168891f&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=7&limitLicense=true", {
         cancelToken: source.token
       })
 
@@ -58,15 +54,16 @@ function App() {
 
   }, [])
 
-  
 
 
   /* Using Routes and the Switch to create a Single Page Application (SPA) navigation structure to render specific components */
   return (
 
     <div className="App">
-      <Header><img src="https://i.ibb.co/RQqZ1d6/Screenshot-2021-11-11-at-23-11-32.png" alt="" className="logo" /></Header>
-      
+      <Header>
+        <Link to="/"><img className="logo" src="https://i.ibb.co/RQqZ1d6/Screenshot-2021-11-11-at-23-11-32.png" alt="" /></Link>
+      </Header>
+
       <SearchInput
         recipeData={recipeData}
         isSearchValue={isSearchValue}
@@ -78,7 +75,7 @@ function App() {
 
       <div className="content">
 
-      
+
         <Switch>
 
           <Route exact path="/">
@@ -98,15 +95,15 @@ function App() {
           </Route>
 
           <Route path="/Favorites"> <Favorites /> </Route>
-          
+
           <Route exact path={"/Recipes/:id"}>
-            <RecipeInformation recipeData={recipeData}/>
+            <RecipeInformation recipeData={recipeData} />
           </Route>
 
         </Switch>
 
       </div >
-      <NavFooter setHide={setHide} hide={hide}/>
+      <NavFooter setHide={setHide} hide={hide} />
     </div >
 
   );
