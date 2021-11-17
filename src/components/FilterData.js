@@ -1,31 +1,31 @@
 //filter through dish types and dietary-info
 const FilterData = [
     {
-        dishType: "Breakfast",
+        dishType: "breakfast",
         isSelected: false,
     },
     {
-        dishType: "Lunch",
+        dishType: "lunch",
         isSelected: false,
     },
     {
-        dishType: "Dinner",
+        dishType: "dinner",
         isSelected: false,
     },
     {
-        dishType: "Snack",
+        dishType: "snack",
         isSelected: false,
     },
     {
-        dishType: "Smoothie",
+        dishType: "smoothie",
         isSelected: false,
     },
     {
-        dishType: "Dessert",
+        dishType: "dessert",
         isSelected: false,
     },
     {
-        dishType: "Side Dish",
+        dishType: "side dish",
         isSelected: false,
     },
     {
@@ -33,7 +33,7 @@ const FilterData = [
         isSelected: false,
     },
     {
-        dishType: "Gluten-free",
+        dishType: "gluten free",
         isSelected: false,
     },
     {

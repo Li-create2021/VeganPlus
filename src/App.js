@@ -1,23 +1,18 @@
 import './index.css';
 import { useState, useEffect } from 'react';
-import { Switch, Route, useLocation } from 'react-router-dom';
+import { Switch, Route, useLocation, Link } from 'react-router-dom';
 import SearchInput from './components/SearchInput';
 import Recipes from './components/Recipes';
 import Favorites from './components/Favorites';
-import RecipeInformation from './components/RecipeInformation';
 import NavFooter from './components/NavFooter';
 import Home from './components/Home';
 import Header from './components/atoms/Header';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
 
-
-//import styled from "styled-components";
-
 function App() {
   // create the state for favorites // 
   const [favRecipes, setFavRecipes] = useState([]);
-  const [showIsFavorite, setShowIsFavorite] = useState(false);
   const [recipeData, setRecipesData] = useState(null);
 
   let location = useLocation();
@@ -66,30 +61,40 @@ function App() {
   function addToFavHandler(id) {  
     const  recipeToAdd = recipeData.find((element) => element.id === id);
     const findDouble = favRecipes.find((itemDouble) => itemDouble.id === recipeToAdd.id);
-    return !findDouble ? setFavRecipes([...favRecipes, recipeToAdd]) : null;
+    
+    console.log(recipeToAdd)
+    if (!findDouble) { 
+      setFavRecipes([...favRecipes, recipeToAdd]);
       } 
+  }
 
-  console.log(favRecipes);
+  const removeFav = (id) => {
+    setFavRecipes(favRecipes.filter((element) => element.id !== id))
+  }
 
 
   /* Using Routes and the Switch to create a Single Page Application (SPA) navigation structure to render specific components */
   return (
 
     <div className="App">
-      <Header><img src="https://i.ibb.co/RQqZ1d6/Screenshot-2021-11-11-at-23-11-32.png" alt="" className="logo" /></Header>
-      
+      <Header>
+        <Link to="/"><img className="logo" src="https://i.ibb.co/RQqZ1d6/Screenshot-2021-11-11-at-23-11-32.png" alt="" /></Link>
+      </Header>
+
       <SearchInput
         recipeData={recipeData}
         isSearchValue={isSearchValue}
         setIsSearchValue={setIsSearchValue}
         pathname={location.pathname}
         setHide={setHide}
-        hide={hide} />
+        hide={hide} 
+        addToFavHandler={addToFavHandler}
+        removeFav={removeFav} />
 
 
       <div className="content">
 
-      
+
         <Switch>
 
           <Route exact path="/">
@@ -97,7 +102,8 @@ function App() {
               recipeData={recipeData}
               setHide={setHide}
               hide={hide} 
-              addToFavHandler={addToFavHandler} />
+              addToFavHandler={addToFavHandler}
+              removeFav={removeFav} />
           
           </Route>
 
@@ -109,7 +115,8 @@ function App() {
                 hide={hide} 
                 addToFavHandler={addToFavHandler} 
                 favRecipes={favRecipes} 
-                setFavRecipes={setFavRecipes} />
+                setFavRecipes={setFavRecipes} 
+                removeFav={removeFav} />
             }
           </Route>
 
@@ -118,11 +125,12 @@ function App() {
           <Favorites 
             setHide={setHide} 
             hide={hide}  
-            showIsFavorite={showIsFavorite} 
             addToFavHandler={addToFavHandler}
             favRecipes={favRecipes} 
-            setFavRecipes={setFavRecipes} />
+            setFavRecipes={setFavRecipes} 
+            removeFav={removeFav} />
           </Route>
+
         </Switch>
 
       </div >

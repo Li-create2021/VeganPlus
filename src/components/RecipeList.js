@@ -4,7 +4,7 @@ import "./RecipeListStyle.css";
 import Section from './atoms/Section';
 
 
-function RecipeList({ recipe, setHide, addToFavHandler, favRecipe, setFavRecipe }) {
+function RecipeList({ recipe, setHide, addToFavHandler, favRecipes, removeFav }) {
     
     const [showIsFavorite, setShowIsFavorite] = useState(false);
     let history = useHistory();
@@ -18,8 +18,17 @@ function RecipeList({ recipe, setHide, addToFavHandler, favRecipe, setFavRecipe 
         setShowIsFavorite(!showIsFavorite); 
         addToFavHandler(recipe.id);
     }
- 
+    
+    const checkFav = () => {
+        if (favRecipes.find(element => element.id === recipe.id)) {
+            return true;
+        } else {
+            return false; 
+        }
+    }
+
     return (
+        <>
         <Section
             onClick={clickHandler}
             className="recipe-card"
@@ -27,8 +36,8 @@ function RecipeList({ recipe, setHide, addToFavHandler, favRecipe, setFavRecipe 
 
         >
                 <button
-                    onClick={() => favHandler}
-                    className={showIsFavorite ? "isFavorite" : "notFavorite"}
+                    onClick={() => favHandler()}
+                    className={checkFav ? "isFavorite" : "notFavorite"}
                 />
 
                 <h3 className="recipe-header">{recipe.title}</h3>
@@ -38,6 +47,7 @@ function RecipeList({ recipe, setHide, addToFavHandler, favRecipe, setFavRecipe 
                     recipe.glutenFree ? <img className="gluten-free-icon" src="https://cdn-icons-png.flaticon.com/512/1410/1410591.png" alt="gluten free"/> : null
                 }
         </Section>
+        </>
     )
 
 }
