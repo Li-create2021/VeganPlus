@@ -1,14 +1,42 @@
 # VeganPlus
 
-We are building a mobile application to help people get started on their vegan journey, to inspire the experienced vegan finding healthy and tasty recipes with nutritional facts.
+Vegan+ is a mobile application to help people like me and you get started on a vegan journey or simply to inspire the experienced vegan finding healthy and tasty recipes with nutritional facts.
 
-We have 3 members in our team: Francis Tatepo, Joshua Meyers and Liana van Zyl who are working together on this project.
+The project is a React application and we are fetching our data from the Spoonacular API: https://spoonacular.com/food-api/apps
 
-The main features are:
+# Our Team:
+This is our second project as Wild Code School Students. 
 
-✅ Home page: With a search bar to search recipes and filter your preferences from here  
-✅ Recipe page: Where you can scroll though more vegan recipes     
-✅ Favorite page: Where you can ultimately save your favorite recipes    
+👉Francis Tatepo: https://github.com/ciscodes
 
-To build our application we made use of Javascript, CSS, Styled-components and React.   
-We are building a SPA with the use of React Route to navigate through the application pages. 
+👉Joshua Meyers: https://github.com/Lume369
+
+👉Liana van Zyl: https://github.com/Li-create2021
+
+View our mobile application here: https://veganplus.netlify.app/
+
+View our application landing page here: https://veganplusapp.netlify.app/home
+
+# Requirements & Installation
+
+If you would like to use this application:
+
+✅$ create-react-app
+
+✅$ mkdir <application-name>
+  
+✅ Clone the code
+  
+✅ npm install
+  
+✅ npm start
+
+This project is using Javascript, CSS, Styled-components and React & React router.
+
+# License
+ 
+MIT License
+
+Copyright (c) 2021 Francis Tatepo, Liana van Zyl, Josh Meyers
+
+See LICENSE file for more information
