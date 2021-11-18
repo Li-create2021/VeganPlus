@@ -1,42 +1,51 @@
 import { useHistory } from 'react-router-dom';
-import { useState } from 'react';
+import { useState, useContext } from 'react';
+import SearchContext from './context/search';
 import "./RecipeListStyle.css";
 import Section from './atoms/Section';
 
 
-function RecipeList({ recipe, setHide, addToFavHandler, favRecipes, removeFav }) {
-    
+function RecipeList({ recipe, removeFav, setHide, addToFavHandler, favRecipes }) {
+    const { setSearchValue } = useContext(SearchContext);
     const [showIsFavorite, setShowIsFavorite] = useState(false);
     let history = useHistory();
 
     function clickHandler() {
+        setSearchValue("");
         setHide(true);
-        history.push(`/Recipes/${recipe.id}`)
+        history.push(`/Recipes/${recipe.id}`);
     }
 
-    const favHandler = () => {
-        setShowIsFavorite(!showIsFavorite); 
-        addToFavHandler(recipe.id);
-    }
-    
     const checkFav = () => {
-        if (favRecipes.find(element => element.id === recipe.id)) {
-            return true;
-        } else {
-            return false; 
+        if (favRecipes.find((element) => element.id === recipe.id)) {
+            setShowIsFavorite(true);
+        } else if (favRecipes.find((element) => element.id !== recipe.id)) {
+            setShowIsFavorite(false);
         }
+    }
+
+    const favHandler = (event) => {
+        event.stopPropagation();
+        if (!showIsFavorite) {
+            setShowIsFavorite(true); 
+            addToFavHandler(recipe.id);
+        } else if (showIsFavorite){
+            setShowIsFavorite(false);
+            removeFav(recipe.id);
+        }
+        
     }
 
     return (
         <>
         <Section
-            onClick={clickHandler}
+            onClick={() =>clickHandler()}
             className="recipe-card"
             style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})`, display: 'flex' }}
 
         >
                 <button
-                    onClick={() => favHandler()}
+                    onClick={(event) => favHandler(event)}
                     className={checkFav ? "isFavorite" : "notFavorite"}
                 />
 

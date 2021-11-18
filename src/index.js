@@ -4,6 +4,8 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
+import {SearchContextProvider} from './components/context/search'
+
 //import Theme from './styles/Theme';
 
 
@@ -11,7 +13,9 @@ import { BrowserRouter as Router } from 'react-router-dom';
 ReactDOM.render(
   <Router>
     <React.StrictMode>
-      <App />
+      <SearchContextProvider>
+        <App />
+      </SearchContextProvider>
     </React.StrictMode>
   </Router>,
 

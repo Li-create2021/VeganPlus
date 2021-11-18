@@ -17,7 +17,7 @@ const FilterData = [
         isSelected: false,
     },
     {
-        dishType: "smoothie",
+        dishType: "soup",
         isSelected: false,
     },
     {
@@ -29,21 +29,27 @@ const FilterData = [
         isSelected: false,
     },
     {
-        dishType: "Sauce/Dressing",
+        dishType: "sauce",
         isSelected: false,
     },
     {
-        dishType: "gluten free",
+        dishType: "drink",
         isSelected: false,
     },
     {
-        dishType: "Nut-free",
+        diet: "gluten free",
+        isSelected: false,
+    },
+    /*
+    {
+        dishType: "peanut free",
         isSelected: false,
     },
     {
-        dishType: "Nightshade-free",
+        dishType: "soy free",
         isSelected: false,
     },
+    */
 ]
 
 export default FilterData;

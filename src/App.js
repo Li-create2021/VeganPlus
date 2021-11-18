@@ -3,6 +3,7 @@ import { useState, useEffect } from 'react';
 import { Switch, Route, useLocation, Link } from 'react-router-dom';
 import SearchInput from './components/SearchInput';
 import Recipes from './components/Recipes';
+import RecipeInformation from './components/RecipeInformation';
 import Favorites from './components/Favorites';
 import NavFooter from './components/NavFooter';
 import Home from './components/Home';
@@ -14,9 +15,10 @@ function App() {
   // create the state for favorites // 
   const [favRecipes, setFavRecipes] = useState([]);
   const [recipeData, setRecipesData] = useState(null);
+  const [searchValue, setSearchValue] = useState("");
 
   let location = useLocation();
-  const [isSearchValue, setIsSearchValue] = useState(true);
+  const [isSearchValue, setIsSearchValue] = useState(false);
   const [hide, setHide] = useState(false);
 
 
@@ -33,7 +35,7 @@ function App() {
 
     axios
 
-      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=14a6c274a3c145b7a6b898948168891f&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=7&limitLicense=true", {
+      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=37cd85a2df4c426685057ae2162f7e75&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=7&limitLicense=true", {
         cancelToken: source.token
       })
 
@@ -61,8 +63,6 @@ function App() {
   function addToFavHandler(id) {  
     const  recipeToAdd = recipeData.find((element) => element.id === id);
     const findDouble = favRecipes.find((itemDouble) => itemDouble.id === recipeToAdd.id);
-    
-    console.log(recipeToAdd)
     if (!findDouble) { 
       setFavRecipes([...favRecipes, recipeToAdd]);
       } 
@@ -89,7 +89,9 @@ function App() {
         setHide={setHide}
         hide={hide} 
         addToFavHandler={addToFavHandler}
-        removeFav={removeFav} />
+        removeFav={removeFav} 
+        searchValue={searchValue}
+        setSearchValue={setSearchValue}/>
 
 
       <div className="content">
@@ -103,12 +105,13 @@ function App() {
               setHide={setHide}
               hide={hide} 
               addToFavHandler={addToFavHandler}
-              removeFav={removeFav} />
+              removeFav={removeFav}
+              searchValue={searchValue}
+              setSearchValue={setSearchValue}  />
           
           </Route>
 
-          <Route path="/Recipes">
-            {isSearchValue &&
+          <Route exact path="/Recipes">
               <Recipes
                 recipeData={recipeData}
                 setHide={setHide}
@@ -116,8 +119,10 @@ function App() {
                 addToFavHandler={addToFavHandler} 
                 favRecipes={favRecipes} 
                 setFavRecipes={setFavRecipes} 
-                removeFav={removeFav} />
-            }
+                removeFav={removeFav} 
+                searchValue={searchValue}
+                setSearchValue={setSearchValue} />
+            
           </Route>
 
           <Route path="/Favorites">
@@ -128,8 +133,14 @@ function App() {
             addToFavHandler={addToFavHandler}
             favRecipes={favRecipes} 
             setFavRecipes={setFavRecipes} 
-            removeFav={removeFav} />
+            removeFav={removeFav} 
+            searchValue={searchValue}
+            setSearchValue={setSearchValue} />
           </Route>
+
+                <Route exact path={"/Recipes/:id"}>
+                    <RecipeInformation recipeData={recipeData} addToFavHandler={addToFavHandler} />
+                </Route>
 
         </Switch>
 

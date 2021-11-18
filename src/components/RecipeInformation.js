@@ -2,9 +2,12 @@
 import "./RecipeInformationStyle.css";
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
+import { useContext } from "react";
+import SearchContext from "./context/search";
 
 const RecipeInformation = (props) => {
 
+    const { searchValue } = useContext(SearchContext)
     const { recipeData, addToFavHandler } = props;
 
     let { id } = useParams();

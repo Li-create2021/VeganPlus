@@ -2,15 +2,7 @@
 import { Switch, Route} from 'react-router-dom';
 import RecipeList from './RecipeList';
 
-const Favorites = ({favRecipes, removeFav, hide, setHide, addToFavHandler}) => { 
-
-const checkFav = (id) => {
-  if (favRecipes.find(element => element.id === id)) {
-      return true;
-  } else {
-      return false; 
-  }
-}
+const Favorites = ({favRecipes, removeFav, hide, setHide, addToFavHandler, searchValue, setSearchValue}) => { 
   
   return (
     <>
@@ -21,7 +13,6 @@ const checkFav = (id) => {
             {
             favRecipes.map((recipe, index )=> {
               return (
-                <section key={recipe.id}  >
                   <RecipeList
                     setHide={setHide} 
                     hide={hide} 
@@ -29,10 +20,10 @@ const checkFav = (id) => {
                     removeFav={removeFav} 
                     addToFavHandler={addToFavHandler}
                     favRecipes={favRecipes}
+                    searchValue={searchValue}
+                    setSearchValue={setSearchValue} 
+                    key={recipe.id}
                   />
-                  {checkFav &&
-                  <button onClick={() => removeFav(recipe.id)}>remove from Favs</button>}
-                  </section>
               )
             })
             }
