@@ -25,7 +25,7 @@ If you would like to use this application:
 
 ✅$ mkdir yourDirectoryName
   
-✅ Clone the code
+✅ Clone the code: https://github.com/Li-create2021/VeganPlus.git (or SSH whichever works for you)
   
 ✅ npm install
   
