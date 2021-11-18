@@ -15,7 +15,7 @@ function Home({ recipeData, hide, setHide, addToFavHandler, favRecipes, removeFa
           
           <section className="recipes">
             {!searchValue && !checkbox.filter(checkbox => checkbox.isSelected)[0] && recipeData &&
-              recipeData.slice(0, 3).map((recipe, index) => {
+              recipeData.slice(0, 3).map((recipe) => {
                 return (
                   <RecipeList 
                     setHide={setHide} 
@@ -45,24 +45,6 @@ function Home({ recipeData, hide, setHide, addToFavHandler, favRecipes, removeFa
                     )
                 })
             }
-
-            {checkbox.filter(checkbox => checkbox.isSelected)[0] && recipeData &&
-                recipeData.filter(item => handleFilterBySearchInputAndCheckBoxes(item)).map(recipe => {
-                    return (
-                        <RecipeList 
-                        searchValue={searchValue} 
-                        setSearchValue={setSearchValue} 
-                        setHide={setHide}
-                        hide={hide} 
-                        recipe={recipe} 
-                        key={recipe.id} 
-                        addToFavHandler={addToFavHandler}
-                        removeFav={removeFav}
-                        favRecipes={favRecipes} />
-                    )
-                })
-            }
-
         </section>
       </Route >
       
