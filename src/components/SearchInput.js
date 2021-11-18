@@ -1,23 +1,21 @@
-import "./SearchInput.css"
+import "./styles/SearchInput.css"
 import React, { useContext, useState } from 'react';
 import Button from './atoms/Button';
 import SearchContext from "./context/search";
 
 
 function SearchInput(props) {
-
-    const { setIsSearchValue } = props;
     const { searchValue, setSearchValue } = useContext(SearchContext);
-    const [isVisible, setIsVisible] = useState(false);
     const {checkbox, setCheckbox} = useContext(SearchContext);
+    const [isVisible, setIsVisible] = useState(false);
 
-    /*Event Handler for Filter List Display*/
+/*Event Handler for Filter List Display*/
     const clickHandler = (event) => {
         event.preventDefault();
         setIsVisible(!isVisible);
     }
 
-    /*Manipulates the state of checkbox to enable the filter funcionality on the checkboxes*/
+/*Manipulates the state of checkbox to enable the filter funcionality on the checkboxes*/
     const checkboxHandler = (index) => {
         const newCheckbox = [...checkbox];
         newCheckbox[index].isSelected = !newCheckbox[index].isSelected;
@@ -25,15 +23,15 @@ function SearchInput(props) {
     }
 
 
-    /* Handles the onChange function of input*/
+/* Handles the onChange function of input*/
     const onChangeHandler = (e) => {
         setSearchValue(e.target.value);
-        e.target.value ? setIsSearchValue(true) : setIsSearchValue(false);
     }
 
-    /*Search input form*/
+/*Search input form*/
     return (
         <>
+        {props.pathname !== "/Favorites" &&
             <form pathname={props.pathname}
                 onSubmit={(e) => e.preventDefault()}>
 
@@ -59,7 +57,7 @@ function SearchInput(props) {
                         <ol className="filter-list">
 
                             {checkbox.map((dish, index) =>
-                                < li key={index} style={{ listStyleType: "none", color: "white" }}>
+                                < li key={index} style={{ listStyleType: "none", color: "white", width: "120px" }}>
 
                                     <input type="checkbox" onChange={() => checkboxHandler(index)} checked={dish.isSelected} /> {dish.dishType || dish.diet}
 
@@ -68,7 +66,7 @@ function SearchInput(props) {
                         </ol>
                     </div>
                 }
-            </form>
+            </form>}
         </>
     );
 }

@@ -1,12 +1,25 @@
 // pass props from APP.JS to Favorites
+import { useContext } from 'react';
 import { Switch, Route} from 'react-router-dom';
+import FavHandlerContext from './context/favHandler';
 import RecipeList from './RecipeList';
 
-const Favorites = ({favRecipes, removeFav, hide, setHide, addToFavHandler, searchValue, setSearchValue}) => { 
-  
+const Favorites = () => { 
+
+  const { favRecipes } = useContext(FavHandlerContext);
+  const isFavorite = () => {
+    if (favRecipes === []) {
+      return false;
+    }
+    else {
+      return true;
+    }
+  }
+
   return (
     <>
       <h1>Your Favorite Recipes </h1>
+      {isFavorite() && <p>Start collecting your favorites here!</p>}
       <Switch>
         <Route exact path={"/Favorites"}>
           <section className="recipes">
@@ -14,14 +27,7 @@ const Favorites = ({favRecipes, removeFav, hide, setHide, addToFavHandler, searc
             favRecipes.map((recipe, index )=> {
               return (
                   <RecipeList
-                    setHide={setHide} 
-                    hide={hide} 
-                    recipe={recipe} 
-                    removeFav={removeFav} 
-                    addToFavHandler={addToFavHandler}
-                    favRecipes={favRecipes}
-                    searchValue={searchValue}
-                    setSearchValue={setSearchValue} 
+                    recipe={recipe}
                     key={recipe.id}
                   />
               )

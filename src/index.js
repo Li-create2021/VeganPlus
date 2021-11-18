@@ -5,6 +5,7 @@ import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
 import {SearchContextProvider} from './components/context/search'
+import {FavHandlerContextProvider} from './components/context/favHandler';
 
 //import Theme from './styles/Theme';
 
@@ -13,8 +14,10 @@ import {SearchContextProvider} from './components/context/search'
 ReactDOM.render(
   <Router>
     <React.StrictMode>
-      <SearchContextProvider>
-        <App />
+      <SearchContextProvider> 
+        <FavHandlerContextProvider>
+          <App />
+        </FavHandlerContextProvider>
       </SearchContextProvider>
     </React.StrictMode>
   </Router>,

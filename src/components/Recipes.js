@@ -1,16 +1,13 @@
-import "./RecipeListStyle.css";
+import "./styles/RecipeListStyle.css";
 import RecipeList from "./RecipeList";
 import { Switch, Route } from 'react-router-dom';
 import SearchContext from "./context/search";
 import { useContext } from "react";
+import FavHandlerContext from "./context/favHandler";
 
-/* This component simply is provides information of 
-   single recipe and maps out in RecipeList component */
-
-function Recipes({ removeFav, recipeData, hide, setHide, addToFavHandler, favRecipes, setFavRecipes }) {
-  const { handleFilterBySearchInputAndCheckBoxes, checkbox } = useContext(SearchContext);
-  const { searchValue, setSearchValue, filteredRecipes, setFilteredRecipes } = useContext(SearchContext);
-  
+function Recipes() {
+  const { handleFilterBySearchInputAndCheckBoxes } = useContext(SearchContext);
+  const { recipeData } = useContext(FavHandlerContext)
   
   return (
       <Switch>
@@ -19,18 +16,11 @@ function Recipes({ removeFav, recipeData, hide, setHide, addToFavHandler, favRec
 
 
             {recipeData &&
-                recipeData.filter(item => handleFilterBySearchInputAndCheckBoxes(item)).map(recipe => {
+                recipeData.filter(item => handleFilterBySearchInputAndCheckBoxes(item)).map((recipe, index) => {
                     return (
                         <RecipeList 
-                        searchValue={searchValue} 
-                        setSearchValue={setSearchValue} 
-                        setHide={setHide}
-                        hide={hide} 
                         recipe={recipe} 
-                        key={recipe.id} 
-                        addToFavHandler={addToFavHandler}
-                        removeFav={removeFav}
-                        favRecipes={favRecipes} />
+                        key={recipe.id}  />
                     )
                 })
             }

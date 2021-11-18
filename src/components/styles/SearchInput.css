@@ -12,11 +12,13 @@
 .filter-list {
     display: flex;
     list-style: none;
-    font-size: 12px;
+    text-align: left;
+    font-size: 18px;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: baseline;
     background-color: rgb(38, 170, 21, 0.6);
+    max-width: 450px; 
 }
 
 .recipe-input{

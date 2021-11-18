@@ -1,5 +1,5 @@
-import './index.css';
-import { useState, useEffect } from 'react';
+import './App.css';
+import { useEffect, useContext } from 'react';
 import { Switch, Route, useLocation, Link } from 'react-router-dom';
 import SearchInput from './components/SearchInput';
 import Recipes from './components/Recipes';
@@ -10,18 +10,16 @@ import Home from './components/Home';
 import Header from './components/atoms/Header';
 import axios from 'axios';
 import { nanoid } from 'nanoid';
+import FavHandlerContext from './components/context/favHandler';
 
 function App() {
-  // create the state for favorites // 
-  const [favRecipes, setFavRecipes] = useState([]);
-  const [recipeData, setRecipesData] = useState(null);
-  const [searchValue, setSearchValue] = useState("");
+
+  /* all Data is stored in a context to be accessable globally */
+  const { recipeData, setRecipesData } = useContext(FavHandlerContext);
 
   let location = useLocation();
-  const [isSearchValue, setIsSearchValue] = useState(false);
-  const [hide, setHide] = useState(false);
 
-
+/* Function to returns steady and unique id */
   const addIdToArrayOfObjects = (array) => {
     return array.map(element => ({
       ...element,
@@ -35,7 +33,7 @@ function App() {
 
     axios
 
-      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=37cd85a2df4c426685057ae2162f7e75&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=7&limitLicense=true", {
+      .get("https://api.spoonacular.com/recipes/complexSearch?apiKey=1d94b5d4f7d448edad529369faf06ed0&diet=vegan&instructionsRequired=true&fillIngredients=true&addRecipeInformation=true&addRecipeNutrition=true&tags=diet=vegan&number=7&limitLicense=true", {
         cancelToken: source.token
       })
 
@@ -48,32 +46,17 @@ function App() {
         console.log(data);
       })
 
-      .catch(() => {
-        console.log('error');
+      .catch((err) => {
+        console.error(err);
       });
 
     return () => {
       source.cancel("Component got unmounted");
     };
 
-  }, [])
+  }, [setRecipesData])
 
-
-  //  this function will be added to an onClick // 
-  function addToFavHandler(id) {  
-    const  recipeToAdd = recipeData.find((element) => element.id === id);
-    const findDouble = favRecipes.find((itemDouble) => itemDouble.id === recipeToAdd.id);
-    if (!findDouble) { 
-      setFavRecipes([...favRecipes, recipeToAdd]);
-      } 
-  }
-
-  const removeFav = (id) => {
-    setFavRecipes(favRecipes.filter((element) => element.id !== id))
-  }
-
-
-  /* Using Routes and the Switch to create a Single Page Application (SPA) navigation structure to render specific components */
+/* Using Routes and the Switch to create a Single Page Application (SPA) navigation structure to render specific components */
   return (
 
     <div className="App">
@@ -83,15 +66,8 @@ function App() {
 
       <SearchInput
         recipeData={recipeData}
-        isSearchValue={isSearchValue}
-        setIsSearchValue={setIsSearchValue}
         pathname={location.pathname}
-        setHide={setHide}
-        hide={hide} 
-        addToFavHandler={addToFavHandler}
-        removeFav={removeFav} 
-        searchValue={searchValue}
-        setSearchValue={setSearchValue}/>
+      />
 
 
       <div className="content">
@@ -100,52 +76,25 @@ function App() {
         <Switch>
 
           <Route exact path="/">
-            <Home
-              recipeData={recipeData}
-              setHide={setHide}
-              hide={hide} 
-              addToFavHandler={addToFavHandler}
-              removeFav={removeFav}
-              searchValue={searchValue}
-              setSearchValue={setSearchValue}  />
-          
+            <Home />
           </Route>
 
           <Route exact path="/Recipes">
-              <Recipes
-                recipeData={recipeData}
-                setHide={setHide}
-                hide={hide} 
-                addToFavHandler={addToFavHandler} 
-                favRecipes={favRecipes} 
-                setFavRecipes={setFavRecipes} 
-                removeFav={removeFav} 
-                searchValue={searchValue}
-                setSearchValue={setSearchValue} />
-            
+              <Recipes />
           </Route>
 
           <Route path="/Favorites">
-
-          <Favorites 
-            setHide={setHide} 
-            hide={hide}  
-            addToFavHandler={addToFavHandler}
-            favRecipes={favRecipes} 
-            setFavRecipes={setFavRecipes} 
-            removeFav={removeFav} 
-            searchValue={searchValue}
-            setSearchValue={setSearchValue} />
+            <Favorites />
           </Route>
 
-                <Route exact path={"/Recipes/:id"}>
-                    <RecipeInformation recipeData={recipeData} addToFavHandler={addToFavHandler} />
-                </Route>
+          <Route exact path={"/Recipes/:id"}>
+              <RecipeInformation />
+          </Route>
 
         </Switch>
 
       </div >
-      <NavFooter setHide={setHide} hide={hide} />
+      <NavFooter  />
     </div >
 
   );

@@ -20,6 +20,7 @@
     padding: 20px;
     display: flex;
     flex-flow: column wrap;
+    max-width: 450px;
 }
 
 .dish-types-and-allergies {
@@ -74,6 +75,51 @@
     border-radius: 10px;
 }
 
+.snack {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(76, 121, 226);
+    border-radius: 10px;
+}
+
+.soup {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(72, 218, 162);
+    border-radius: 10px;
+}
+
+.dessert {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(151, 111, 111);
+    border-radius: 10px;
+}
+
+.sauce {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(192, 214, 109);
+    border-radius: 10px;
+}
+
+.drink {
+    color: white;
+    font-size: 18px;
+    margin: 2px 0 5px 2px;
+    padding: 3px 9px;
+    background-color: rgb(175, 140, 76);
+    border-radius: 10px;
+}
+
 /* MAIN IMAGE */
 .main-image {
     align-self: center;
@@ -101,9 +147,19 @@
 
 /* Ingredient information and image */
 .ingredients {
+    display: flex;
+    align-content: center;
+    flex-flow: column wrap;
+    text-align: left;
     margin-bottom: 20px;
     width: 90vw;
     max-width: 450px;
+}
+
+.ingredients-list {
+    align-self: flex-start;
+    width: 250px;
+    list-style: circle;
 }
 
 .view-image {
@@ -146,6 +202,6 @@
 
 /* Adjustments for info-icon on bottom of page */
 .info-icon {
-    height: 36px;
-    width: 36px;
+    height: 40px;
+    width: 40px;
 }

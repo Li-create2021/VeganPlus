@@ -1,36 +1,31 @@
 import { useHistory } from 'react-router-dom';
-import { useState, useContext } from 'react';
+import { useContext } from 'react';
 import SearchContext from './context/search';
-import "./RecipeListStyle.css";
+import "./styles/RecipeListStyle.css";
 import Section from './atoms/Section';
+import FavHandlerContext from './context/favHandler';
 
 
-function RecipeList({ recipe, removeFav, setHide, addToFavHandler, favRecipes }) {
-    const { setSearchValue } = useContext(SearchContext);
-    const [showIsFavorite, setShowIsFavorite] = useState(false);
+function RecipeList({ recipe }) {
+
+    const { searchValue, setSearchValue } = useContext(SearchContext);
+    const { checkFav, addToFavHandler, removeFav } = useContext(FavHandlerContext);
     let history = useHistory();
 
+/* on click on card: move to RecipeInformation */
     function clickHandler() {
-        setSearchValue("");
-        setHide(true);
+        searchValue && setSearchValue("");
         history.push(`/Recipes/${recipe.id}`);
     }
 
-    const checkFav = () => {
-        if (favRecipes.find((element) => element.id === recipe.id)) {
-            setShowIsFavorite(true);
-        } else if (favRecipes.find((element) => element.id !== recipe.id)) {
-            setShowIsFavorite(false);
-        }
-    }
-
+/* Handles the favorite button  */
     const favHandler = (event) => {
         event.stopPropagation();
-        if (!showIsFavorite) {
-            setShowIsFavorite(true); 
+
+        if (!checkFav(recipe.id)) { //if current recipe is NOT fav, then ADD it as favs
             addToFavHandler(recipe.id);
-        } else if (showIsFavorite){
-            setShowIsFavorite(false);
+        } 
+        else if (checkFav(recipe.id)) { //if current recipe is ALREADY fav, then REMOVE it from favs
             removeFav(recipe.id);
         }
         
@@ -46,7 +41,7 @@ function RecipeList({ recipe, removeFav, setHide, addToFavHandler, favRecipes })
         >
                 <button
                     onClick={(event) => favHandler(event)}
-                    className={checkFav ? "isFavorite" : "notFavorite"}
+                    className={checkFav(recipe.id) ? "isFavorite" : "notFavorite"}
                 />
 
                 <h3 className="recipe-header">{recipe.title}</h3>
