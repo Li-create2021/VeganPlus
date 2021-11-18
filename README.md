@@ -1,6 +1,6 @@
 # VeganPlus
 
-Vegan+ is a mobile application to help people like me and you get started on a vegan journey or simply to inspire the experienced vegan finding healthy and tasty recipes with nutritional facts.
+Vegan+ is a mobile application to help people like you and me get started on a vegan journey or simply to inspire the experienced vegan finding healthy and tasty recipes with nutritional facts.
 
 The project is a React application and we are fetching our data from the Spoonacular API: https://spoonacular.com/food-api/apps
 
