@@ -21,9 +21,9 @@ View our application landing page here: https://veganplusapp.netlify.app/home
 
 If you would like to use this application:
 
-✅$ create-react-app
+✅$ create-react-app yourAppName
 
-✅$ mkdir <application-name>
+✅$ mkdir yourDirectoryName
   
 ✅ Clone the code
   
