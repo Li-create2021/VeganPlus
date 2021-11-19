@@ -63,7 +63,7 @@ const RecipeInformation = () => {
 
             <section className="dish-types-and-allergies">
                 { /* Gluten free icon */
-                    recipe.glutenFree ? <img className="gluten-free-icon" src="https://cdn-icons-png.flaticon.com/512/1410/1410591.png" alt="gluten free"/> : null
+                    recipe.glutenFree ? <img className="gluten-free-icon-info-page" src="https://cdn-icons-png.flaticon.com/512/1410/1410591.png" alt="gluten free"/> : null
                 }
 
                 <section className="dish-types">
@@ -89,22 +89,22 @@ const RecipeInformation = () => {
 
                     {recipe.dishTypes
                         .filter((dish) => dish.includes("snack"))
-                        .map((element, index) => <p key={index} className="snack">side dish</p>)
+                        .map((element, index) => <p key={index} className="snack">snack</p>)
                     }
 
                     {recipe.dishTypes
                         .filter((dish) => dish.includes("soup"))
-                        .map((element, index) => <p key={index} className="soup">side dish</p>)
+                        .map((element, index) => <p key={index} className="soup">soup</p>)
                     }
 
                     {recipe.dishTypes
                         .filter((dish) => dish.includes("dessert"))
-                        .map((element, index) => <p key={index} className="dessert">side dish</p>)
+                        .map((element, index) => <p key={index} className="dessert">dessert</p>)
                     }
 
                     {recipe.dishTypes
                         .filter((dish) => dish.includes("sauce"))
-                        .map((element, index) => <p key={index} className="sauce">side dish</p>)
+                        .map((element, index) => <p key={index} className="sauce">sauce</p>)
                     }
 
                     {recipe.dishTypes
@@ -129,7 +129,7 @@ const RecipeInformation = () => {
 {/********     Displays cookingtime, servings and health score    ************/}
             <ul className="info-overview">
                 <li className="overview-list">Total time: {recipe.readyInMinutes}min</li>
-                <li className="overview-list">Health score: {recipe.healthScore}</li>
+                <li className="overview-list">Carbs: {Math.round(recipe.nutrition.caloricBreakdown.percentCarbs)}%</li>
                 <li className="overview-list">Servings: {recipe.servings}</li>
             </ul>
 
@@ -139,7 +139,7 @@ const RecipeInformation = () => {
                 <h2>Ingredients:</h2>
                 {ingredient.map((items, index) => {
                     return <li className="ingredients-list" key={`${index}147`}>
-                                {`${items.measures.metric.amount} 
+                                {`${Math.round(items.measures.metric.amount)} 
                                 ${items.measures.metric.unitShort}        
                                 ${items.name}`}
                             </li>
@@ -179,7 +179,7 @@ const RecipeInformation = () => {
 
 
 {/********     Information drop-down     ************/}
-            <img className="info-icon" src="https://cdn-icons.flaticon.com/png/512/3766/premium/3766220.png?token=exp=1636895696~hmac=4000b0c71628b5540fdf2bf1c34f6732" alt="information" onClick={(e) => getInfo(e)}/> 
+            <p className="info-icon" onClick={() => getInfo()} >&#9432;</p> 
             {showInformation &&
                 <>
                     <h2>Information</h2>

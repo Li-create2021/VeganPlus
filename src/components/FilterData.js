@@ -1,10 +1,6 @@
 //filter through dish types and dietary-info
 const FilterData = [
     {
-        dishType: "breakfast",
-        isSelected: false,
-    },
-    {
         dishType: "lunch",
         isSelected: false,
     },
@@ -21,15 +17,7 @@ const FilterData = [
         isSelected: false,
     },
     {
-        dishType: "dessert",
-        isSelected: false,
-    },
-    {
         dishType: "side dish",
-        isSelected: false,
-    },
-    {
-        dishType: "sauce",
         isSelected: false,
     },
     {
@@ -40,16 +28,6 @@ const FilterData = [
         diet: "gluten free",
         isSelected: false,
     },
-    /*
-    {
-        dishType: "peanut free",
-        isSelected: false,
-    },
-    {
-        dishType: "soy free",
-        isSelected: false,
-    },
-    */
 ]
 
 export default FilterData;

@@ -24,9 +24,6 @@ function Recipes() {
                     )
                 })
             }
-
-         
-
           </section>
         </Route>
       </Switch>
