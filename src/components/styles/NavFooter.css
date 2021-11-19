@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); /*  ???  */
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@200&display=swap'); /*  Application font  */
 
  /* CSS for the navbar displayed at the bottom of all the pages */
 .footer {
@@ -6,13 +6,12 @@
     padding:0;
     display: flex;
     justify-content:space-around;
+    position: fixed;
     list-style: none;
     text-decoration: none;
     max-height: 30px;
     background-color: rgb(255, 255, 255);
-    position: fixed;
     bottom: 0;
-    left: 0;
     width: 100%;
   }
 

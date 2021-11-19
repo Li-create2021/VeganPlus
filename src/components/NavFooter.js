@@ -1,11 +1,11 @@
 import { useHistory } from 'react-router-dom';
-import './NavFooter.css';
+import './styles/NavFooter.css';
 import { FaHome } from "react-icons/fa";
 import { BiFoodMenu } from "react-icons/bi";
 import { MdFavoriteBorder } from "react-icons/md";
 
 
-const NavFooter = ({ setHide }) => {
+const NavFooter = () => {
     let history = useHistory();
 
     return (
@@ -14,11 +14,11 @@ const NavFooter = ({ setHide }) => {
             <ul className="footer">
 
                 <li className="nav-links">
-                    <FaHome size={25} color={"rgb(38, 170, 21)"} onClick={() => {history.push('/'); setHide(false)}} />
+                    <FaHome size={25} color={"rgb(38, 170, 21)"} onClick={() => {history.push('/')}} />
                 </li>
 
                 <li className="nav-links">
-                    <BiFoodMenu size={25} color={"rgb(38, 170, 21)"} onClick={() => {history.push('/Recipes'); setHide(false)}} />
+                    <BiFoodMenu size={25} color={"rgb(38, 170, 21)"} onClick={() => {history.push('/Recipes')}} />
                 </li>
 
                 <li className="nav-links">

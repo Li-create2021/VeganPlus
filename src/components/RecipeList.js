@@ -1,35 +1,47 @@
-import { useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import "./RecipeListStyle.css";
+import { useContext } from 'react';
+import SearchContext from './context/search';
+import "./styles/RecipeListStyle.css";
 import Section from './atoms/Section';
+import FavHandlerContext from './context/favHandler';
 
 
-function RecipeList({ recipe, setHide }) {
+function RecipeList({ recipe }) {
+
+    const { searchValue, setSearchValue } = useContext(SearchContext);
+    const { checkFav, addToFavHandler, removeFav } = useContext(FavHandlerContext);
     let history = useHistory();
-    const [showIsFavorite, setShowIsFavorite] = useState(false);
 
-    function handleClickFavorite(event) {
-        event.stopPropagation();
-        event.preventDefault()
-    setShowIsFavorite(!showIsFavorite);
+/* on click on card: move to RecipeInformation */
+    function clickHandler() {
+        searchValue && setSearchValue("");
+        history.push(`/Recipes/${recipe.id}`);
     }
 
-    function clickHandler() {
-        setHide(true);
-        history.push(`/Recipes/${recipe.id}`)
+/* Handles the favorite button  */
+    const favHandler = (event) => {
+        event.stopPropagation();
+
+        if (!checkFav(recipe.id)) { //if current recipe is NOT fav, then ADD it as favs
+            addToFavHandler(recipe.id);
+        } 
+        else if (checkFav(recipe.id)) { //if current recipe is ALREADY fav, then REMOVE it from favs
+            removeFav(recipe.id);
+        }
+        
     }
 
     return (
+        <>
         <Section
-            onClick={clickHandler}
+            onClick={() =>clickHandler()}
             className="recipe-card"
             style={{ backgroundSize: 'cover', backgroundImage: `url(${recipe.image})`, display: 'flex' }}
 
         >
                 <button
-                    id="favorite"
-                    onClick={(e) => handleClickFavorite(e)}
-                    className={showIsFavorite ? "isFavorite" : "notFavorite"}
+                    onClick={(event) => favHandler(event)}
+                    className={checkFav(recipe.id) ? "isFavorite" : "notFavorite"}
                 />
 
                 <h3 className="recipe-header">{recipe.title}</h3>
@@ -39,6 +51,7 @@ function RecipeList({ recipe, setHide }) {
                     recipe.glutenFree ? <img className="gluten-free-icon" src="https://cdn-icons-png.flaticon.com/512/1410/1410591.png" alt="gluten free"/> : null
                 }
         </Section>
+        </>
     )
 
 }

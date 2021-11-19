@@ -1,20 +1,38 @@
-import "./RecipeInformationStyle.css";
+
+import "./styles/RecipeInformationStyle.css";
 import { useParams } from 'react-router-dom';
 import { useState } from "react";
+import { useContext } from "react";
+import FavHandlerContext from "./context/favHandler";
 
-function RecipeInformation({ recipeData }) {
+const RecipeInformation = () => {
+ /* No more props. DATA comes from favHandler.js */
+    const { recipeData, checkFav, addToFavHandler, removeFav } = useContext(FavHandlerContext);
 
+/* provides single recipe information */
     let { id } = useParams();
     const recipe = recipeData.find(recipe => recipe.id === id)
     const ingredient = recipe.extendedIngredients;
     const [ showImages, setShowImages] = useState(false);
     const [ showInformation, setShowInformation ] = useState(false);
-
-    const getInfo = (e) => {
+    
+/* Displays information on very bottom page */
+    const getInfo = () => {
         setShowInformation(!showInformation)
     }
 
-    /* IMAGES and RE-Sizing */
+/* Handles the FAVORITE BUTTON */
+    const favHandler = () => {
+        if (!checkFav(recipe.id)) {
+            addToFavHandler(recipe.id);
+        } else if (checkFav(recipe.id)) {
+            removeFav(recipe.id);
+        }
+        
+    }
+
+
+/* IMAGES and RE-Sizing */
 
     const viewImages = (e) => {
         e.preventDefault();
@@ -32,6 +50,7 @@ function RecipeInformation({ recipeData }) {
             e.target.style.transform = "scale(1.5)",
             e.target.style.transition = "transform 0.25s ease" )
         }
+
     }
 
     return (
@@ -67,10 +86,44 @@ function RecipeInformation({ recipeData }) {
                         .filter((dish) => dish.includes("side dish"))
                         .map((element, index) => <p key={index} className="side-dish">side dish</p>)
                     }
+
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("snack"))
+                        .map((element, index) => <p key={index} className="snack">side dish</p>)
+                    }
+
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("soup"))
+                        .map((element, index) => <p key={index} className="soup">side dish</p>)
+                    }
+
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("dessert"))
+                        .map((element, index) => <p key={index} className="dessert">side dish</p>)
+                    }
+
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("sauce"))
+                        .map((element, index) => <p key={index} className="sauce">side dish</p>)
+                    }
+
+                    {recipe.dishTypes
+                        .filter((dish) => dish.includes("drink"))
+                        .map((element, index) => <p key={index} className="drink">side dish</p>)
+                    }
                 </section>
             </section>
 
+
+{/**************  MAIN IMAGE on top of information  *********************/}      
+                
                 <img className="main-image" src={recipe.image} alt={recipe.title} />
+                
+                <button
+                    className={checkFav(recipe.id) ? "isFavorite" : "notFavorite"}
+                    onClick={() => favHandler()}
+                />
+                    
             </header>
 
 {/********     Displays cookingtime, servings and health score    ************/}
@@ -85,13 +138,14 @@ function RecipeInformation({ recipeData }) {
             <section className="ingredients">
                 <h2>Ingredients:</h2>
                 {ingredient.map((items, index) => {
-                    return <li key={`${index}147`}>
+                    return <li className="ingredients-list" key={`${index}147`}>
                                 {`${items.measures.metric.amount} 
-                                ${items.measures.metric.unitShort} 
+                                ${items.measures.metric.unitShort}        
                                 ${items.name}`}
                             </li>
                 })}
             </section>
+
 
 {/********     Button to view images and image mapping     ************/}
             <button className="view-image" onClick={(e) => viewImages(e)} >View picture</button>
@@ -109,6 +163,7 @@ function RecipeInformation({ recipeData }) {
                 </section>
             }
 
+
 {/********     Maps out all steps     ************/}
             <section className="instructions">
                 {recipe.analyzedInstructions[0].steps.map((item, index) => {
@@ -121,6 +176,7 @@ function RecipeInformation({ recipeData }) {
                     )
                 })}
             </section>
+
 
 {/********     Information drop-down     ************/}
             <img className="info-icon" src="https://cdn-icons.flaticon.com/png/512/3766/premium/3766220.png?token=exp=1636895696~hmac=4000b0c71628b5540fdf2bf1c34f6732" alt="information" onClick={(e) => getInfo(e)}/> 

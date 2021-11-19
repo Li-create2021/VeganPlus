@@ -4,18 +4,21 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 import { BrowserRouter as Router } from 'react-router-dom';
-import Theme from './styles/Theme';
+import {SearchContextProvider} from './components/context/search'
+import {FavHandlerContextProvider} from './components/context/favHandler';
+
+//import Theme from './styles/Theme';
 
 
 
 ReactDOM.render(
   <Router>
     <React.StrictMode>
-
-      <Theme>
-        <App />
-      </Theme>
-
+      <SearchContextProvider> 
+        <FavHandlerContextProvider>
+          <App />
+        </FavHandlerContextProvider>
+      </SearchContextProvider>
     </React.StrictMode>
   </Router>,
 

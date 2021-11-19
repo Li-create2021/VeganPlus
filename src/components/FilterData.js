@@ -1,49 +1,55 @@
 //filter through dish types and dietary-info
 const FilterData = [
     {
-        dishType: "Breakfast",
+        dishType: "breakfast",
         isSelected: false,
     },
     {
-        dishType: "Lunch",
+        dishType: "lunch",
         isSelected: false,
     },
     {
-        dishType: "Dinner",
+        dishType: "dinner",
         isSelected: false,
     },
     {
-        dishType: "Snack",
+        dishType: "snack",
         isSelected: false,
     },
     {
-        dishType: "Smoothie",
+        dishType: "soup",
         isSelected: false,
     },
     {
-        dishType: "Dessert",
+        dishType: "dessert",
         isSelected: false,
     },
     {
-        dishType: "Side Dish",
+        dishType: "side dish",
         isSelected: false,
     },
     {
-        dishType: "Sauce/Dressing",
+        dishType: "sauce",
         isSelected: false,
     },
     {
-        dishType: "Gluten-free",
+        dishType: "drink",
         isSelected: false,
     },
     {
-        dishType: "Nut-free",
+        diet: "gluten free",
+        isSelected: false,
+    },
+    /*
+    {
+        dishType: "peanut free",
         isSelected: false,
     },
     {
-        dishType: "Nightshade-free",
+        dishType: "soy free",
         isSelected: false,
     },
+    */
 ]
 
 export default FilterData;
