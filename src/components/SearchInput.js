@@ -31,7 +31,7 @@ function SearchInput(props) {
 /*Search input form*/
     return (
         <>
-        {props.pathname !== "/Favorites" && props.pathname !== "/Recipe/:id" &&
+        {props.pathname !== "/Favorites" && props.pathname !== "/Recipes/:id" &&
             <form className="search-input" pathname={props.pathname}
                 onSubmit={(e) => e.preventDefault()}>
 
