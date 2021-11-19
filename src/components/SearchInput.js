@@ -32,7 +32,7 @@ function SearchInput(props) {
     return (
         <>
         {props.pathname !== "/Favorites" &&
-            <form pathname={props.pathname}
+            <form className="search-input" pathname={props.pathname}
                 onSubmit={(e) => e.preventDefault()}>
 
                 <input
@@ -49,7 +49,7 @@ function SearchInput(props) {
                     type="button"
                     onClick={clickHandler}
                 >
-                    Search
+                    Filter
                 </Button>
 
                 {isVisible &&

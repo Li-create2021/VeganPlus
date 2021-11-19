@@ -17,7 +17,7 @@ function Home() {
 
             <section className="recipes">
               {!searchValue && !checkbox.filter(checkbox => checkbox.isSelected)[0] && recipeData &&
-                recipeData.slice(0, 3).map((recipe, index) => {
+                recipeData.slice(0, 2).map((recipe, index) => {
                   return (
                     <RecipeList 
                       recipe={recipe} 

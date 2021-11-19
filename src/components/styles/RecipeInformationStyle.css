@@ -31,8 +31,9 @@
     max-width: 450px;
 }
 
-.gluten-free-icon {
-    margin-bottom: 5px;
+.gluten-free-icon-info-page {
+    width: 30px;
+    height: 30px;
 }
 
 .dish-types {
@@ -202,6 +203,5 @@
 
 /* Adjustments for info-icon on bottom of page */
 .info-icon {
-    height: 40px;
-    width: 40px;
+    font-size: 20px;
 }
