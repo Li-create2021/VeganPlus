@@ -20,10 +20,6 @@ View our application landing page here: https://veganplusapp.netlify.app/home
 # Requirements & Installation
 
 If you would like to use this application:
-
-✅$ create-react-app yourAppName
-
-✅$ mkdir yourDirectoryName
   
 ✅ Clone the code: https://github.com/Li-create2021/VeganPlus.git (or SSH whichever works for you)
   
